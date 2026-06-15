@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import DraggableBrush from './components/DraggableBrush';
+// import DraggableBrush from './components/DraggableBrush';
 import userPicNoBg from './assets/user_pic_no_bg.png';
 import './App.css';
 
@@ -14,6 +14,7 @@ const STARS = Array.from({ length: 80 }).map((_, i) => ({
 }));
 
 export default function App() {
+  /*
   const [particles, setParticles] = useState([]);
   const particlesRef = useRef([]);
 
@@ -65,6 +66,7 @@ export default function App() {
 
     return () => cancelAnimationFrame(animationFrameId);
   }, []);
+  */
 
   return (
     <div className="meteorite-app-root">
@@ -100,7 +102,7 @@ export default function App() {
         <div className="meteorite met-4" />
       </div>
 
-      {/* 4. Drag-Trail Particle Emitter (Embers) */}
+      {/* 4. Drag-Trail Particle Emitter (Embers) - Commented Out
       {particles.map((p) => (
         <div
           key={p.id}
@@ -116,14 +118,16 @@ export default function App() {
           }}
         />
       ))}
+      */}
 
       {/* 5. Animated Header text coming from above head */}
       <div className="cosmic-header-container">
         <h1 className="cosmic-heading">Hi, I am Udit Kumar</h1>
       </div>
 
-      {/* 5. Draggable Paintbrush (Floating on top) */}
+      {/* 5. Draggable Paintbrush (Floating on top) - Commented Out
       <DraggableBrush onMove={handleBrushMove} />
+      */}
 
     </div>
   );
