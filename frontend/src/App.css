@@ -24,7 +24,7 @@
 
 .wix-portfolio-container {
   display: grid;
-  grid-template-columns: minmax(400px, 1.1fr) 1fr;
+  grid-template-columns: minmax(500px, 1.3fr) 1fr;
   gap: 80px;
   max-width: 1100px;
   width: 100%;
@@ -56,7 +56,7 @@
   border-radius: 4px;
   padding: 48px;
   width: 100%;
-  max-width: 440px;
+  max-width: 570px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -85,8 +85,8 @@
 
 .photo-container-wrapper {
   position: relative;
-  width: 260px;
-  height: 260px;
+  width: 340px;
+  height: 340px;
   margin-bottom: 32px;
 
   @media (max-width: 480px) {
