@@ -4,8 +4,12 @@
 .wix-portfolio-root {
   min-height: 100vh;
   width: 100%;
-  background-color: #1a1a1a; /* Dark charcoal */
-  color: #ffffff;
+  position: relative;
+  background-color: var(--bg);
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(26, 15, 54, 0.4) 0%, transparent 50%),
+    radial-gradient(circle at 90% 80%, rgba(54, 20, 15, 0.35) 0%, transparent 50%);
+  overflow-x: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -103,6 +107,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center 12%; /* Shift crop up to center on your face */
   border-radius: 12px;
   display: block;
 }
@@ -348,4 +353,101 @@ a.footer-val:hover {
   font-size: 0.85rem;
   line-height: 1.6;
   margin: 0;
+}
+
+/* ==========================================================================
+   Starry Sky & Shooting Meteorites (Meteorite Theme Background)
+   ========================================================================== */
+.stars-container {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.star {
+  position: absolute;
+  background-color: #ffffff;
+  border-radius: 50%;
+  opacity: 0.3;
+  animation: twinkle infinite ease-in-out;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.15; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.3); }
+}
+
+.shooting-stars-container {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.meteorite {
+  position: absolute;
+  width: 100px;
+  height: 2px;
+  background: linear-gradient(90deg, rgba(255, 140, 0, 1) 0%, rgba(255, 215, 0, 0.4) 30%, rgba(255, 255, 255, 0) 100%);
+  border-radius: 100px;
+  opacity: 0;
+  transform: rotate(-35deg) scaleX(0);
+  transform-origin: left center;
+  filter: drop-shadow(0 0 6px #ff8c00);
+}
+
+.met-1 {
+  top: 10%;
+  right: 15%;
+  animation: shoot 8s infinite ease-in-out;
+  animation-delay: 1s;
+}
+
+.met-2 {
+  top: 35%;
+  right: 5%;
+  animation: shoot 11s infinite ease-in-out;
+  animation-delay: 4s;
+  width: 150px;
+  filter: drop-shadow(0 0 8px #ff4500);
+}
+
+.met-3 {
+  top: 60%;
+  right: 40%;
+  animation: shoot 7s infinite ease-in-out;
+  animation-delay: 2s;
+  width: 80px;
+}
+
+.met-4 {
+  top: 15%;
+  right: 60%;
+  animation: shoot 14s infinite ease-in-out;
+  animation-delay: 7s;
+  width: 120px;
+}
+
+@keyframes shoot {
+  0% {
+    transform: rotate(-35deg) translateX(0) scaleX(0);
+    opacity: 0;
+  }
+  1% {
+    opacity: 1;
+  }
+  6% {
+    transform: rotate(-35deg) translateX(-450px) scaleX(1.5);
+    opacity: 0;
+  }
+  100% {
+    transform: rotate(-35deg) translateX(-450px) scaleX(1.5);
+    opacity: 0;
+  }
 }

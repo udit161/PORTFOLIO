@@ -1,9 +1,46 @@
 import userPic from './assets/user_pic.jpg';
 import './App.css';
 
+// Pre-generate static stars for performance
+const STARS = Array.from({ length: 80 }).map((_, i) => ({
+  id: i,
+  left: `${Math.random() * 100}%`,
+  top: `${Math.random() * 100}%`,
+  size: Math.random() * 2 + 1,
+  delay: `${Math.random() * 8}s`,
+  duration: `${Math.random() * 4 + 3}s`,
+}));
+
 export default function App() {
   return (
     <div className="wix-portfolio-root">
+      
+      {/* 1. Twinkling Stars Background */}
+      <div className="stars-container">
+        {STARS.map((star) => (
+          <div
+            key={star.id}
+            className="star"
+            style={{
+              left: star.left,
+              top: star.top,
+              width: `${star.size}px`,
+              height: `${star.size}px`,
+              animationDelay: star.delay,
+              animationDuration: star.duration,
+            }}
+          />
+        ))}
+      </div>
+
+      {/* 2. Automated Shooting Stars / Meteorites */}
+      <div className="shooting-stars-container">
+        <div className="meteorite met-1" />
+        <div className="meteorite met-2" />
+        <div className="meteorite met-3" />
+        <div className="meteorite met-4" />
+      </div>
+
       <div className="wix-portfolio-container">
         
         {/* Left Column: Lavender Card Block */}
