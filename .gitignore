@@ -1,0 +1,30 @@
+# Virtual environment
+backend/venv/
+.venv/
+venv/
+ENV/
+
+# Node modules & builds
+frontend/node_modules/
+frontend/dist/
+
+# Python cache & logs
+**/__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.log
+
+# Editor settings
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# OS files
+.DS_Store
+Thumbs.db

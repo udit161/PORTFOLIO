@@ -1,0 +1,110 @@
+:root {
+  --text: #d0cbd6;
+  --text-h: #ffffff;
+  --bg: #06060c; /* Deep Space Black */
+  --border: rgba(255, 255, 255, 0.08);
+  --code-bg: #100d20;
+  --accent: #ff8c00; /* Burning Meteor Orange */
+  --accent-bg: rgba(255, 140, 0, 0.12);
+  --accent-border: rgba(255, 140, 0, 0.4);
+  --social-bg: rgba(255, 255, 255, 0.04);
+  --shadow: rgba(0, 0, 0, 0.6) 0 15px 35px -5px, rgba(0, 0, 0, 0.4) 0 5px 15px -3px;
+
+  --sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --heading: 'Playfair Display', Georgia, serif;
+  --handwritten: 'Caveat', cursive;
+  --mono: ui-monospace, Consolas, monospace;
+
+  font: 18px/150% var(--sans);
+  letter-spacing: 0.1px;
+  color: var(--text);
+  background: var(--bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  @media (max-width: 1024px) {
+    font-size: 16px;
+  }
+}
+
+/* Base styling */
+body {
+  margin: 0;
+  background-color: var(--bg);
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  color: var(--text);
+}
+
+/* Custom Scrollbar for Cosmic feel */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-border);
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--heading);
+  font-weight: 600;
+  color: var(--text-h);
+  margin: 0;
+}
+
+h1 {
+  font-size: 3.5rem;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-size: 2.2rem;
+  line-height: 1.3;
+}
+
+h3 {
+  font-size: 1.5rem;
+  line-height: 1.4;
+}
+
+p {
+  margin: 0;
+  line-height: 1.6;
+}
+
+code {
+  font-family: var(--mono);
+  font-size: 0.85em;
+  padding: 0.2em 0.4em;
+  background: var(--code-bg);
+  border-radius: 4px;
+  border: 1px solid var(--border);
+}
+
+/* Utility handwritten text classes */
+.handwritten {
+  font-family: var(--handwritten);
+  font-size: 1.4rem;
+  color: var(--accent);
+  line-height: 1.2;
+}

@@ -1,0 +1,190 @@
+/* ==========================================================================
+   Cosmic Meteorite App Layout
+   ========================================================================== */
+.meteorite-app-root {
+  min-height: 100vh;
+  width: 100vw;
+  position: relative;
+  background-color: var(--bg);
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(26, 15, 54, 0.4) 0%, transparent 50%),
+    radial-gradient(circle at 90% 80%, rgba(54, 20, 15, 0.35) 0%, transparent 50%);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ==========================================================================
+   Starry Sky & Shooting Meteorites
+   ========================================================================== */
+.stars-container {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.star {
+  position: absolute;
+  background-color: #ffffff;
+  border-radius: 50%;
+  opacity: 0.3;
+  animation: twinkle infinite ease-in-out;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.15; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.3); }
+}
+
+/* Shooting Stars (Meteorites) */
+.shooting-stars-container {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.meteorite {
+  position: absolute;
+  width: 100px;
+  height: 2px;
+  background: linear-gradient(90deg, rgba(255, 140, 0, 1) 0%, rgba(255, 215, 0, 0.4) 30%, rgba(255, 255, 255, 0) 100%);
+  border-radius: 100px;
+  opacity: 0;
+  transform: rotate(-35deg) scaleX(0);
+  transform-origin: left center;
+  filter: drop-shadow(0 0 6px #ff8c00);
+}
+
+.met-1 {
+  top: 10%;
+  right: 15%;
+  animation: shoot 8s infinite ease-in-out;
+  animation-delay: 1s;
+}
+
+.met-2 {
+  top: 35%;
+  right: 5%;
+  animation: shoot 11s infinite ease-in-out;
+  animation-delay: 4s;
+  width: 150px;
+  filter: drop-shadow(0 0 8px #ff4500);
+}
+
+.met-3 {
+  top: 60%;
+  right: 40%;
+  animation: shoot 7s infinite ease-in-out;
+  animation-delay: 2s;
+  width: 80px;
+}
+
+.met-4 {
+  top: 15%;
+  right: 60%;
+  animation: shoot 14s infinite ease-in-out;
+  animation-delay: 7s;
+  width: 120px;
+}
+
+@keyframes shoot {
+  0% {
+    transform: rotate(-35deg) translateX(0) scaleX(0);
+    opacity: 0;
+  }
+  1% {
+    opacity: 1;
+  }
+  6% {
+    transform: rotate(-35deg) translateX(-450px) scaleX(1.5);
+    opacity: 0;
+  }
+  100% {
+    transform: rotate(-35deg) translateX(-450px) scaleX(1.5);
+    opacity: 0;
+  }
+}
+
+/* Draggable particles (Embers) */
+.meteor-spark {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+}
+
+/* ==========================================================================
+   Draggable Paintbrush
+   ========================================================================== */
+.draggable-brush-container {
+  position: fixed;
+  width: 110px;
+  height: 110px;
+  z-index: 99999;
+  cursor: grab;
+  user-select: none;
+  touch-action: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Switch off transition for top/left during drag to prevent movement lag */
+  transition: transform 0.15s cubic-bezier(0.25, 0.8, 0.25, 1.1);
+}
+
+.draggable-brush-container.dragging {
+  cursor: grabbing;
+  transform: scale(1.08) !important; /* Lock scale, prevent mouse move rotation conflict */
+}
+
+.brush-glow-aura {
+  position: absolute;
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 140, 0, 0.16) 0%, rgba(255, 215, 0, 0.04) 40%, transparent 70%);
+  pointer-events: none;
+}
+
+.draggable-brush-container:hover .brush-glow-aura {
+  background: radial-gradient(circle, rgba(255, 140, 0, 0.24) 0%, rgba(255, 215, 0, 0.08) 45%, transparent 70%);
+}
+
+.draggable-brush-svg {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.4)) drop-shadow(0 0 10px rgba(255, 140, 0, 0.2));
+  transition: filter 0.3s;
+}
+
+.draggable-brush-container.dragging .draggable-brush-svg {
+  filter: drop-shadow(0 12px 20px rgba(0, 0, 0, 0.5)) drop-shadow(0 0 15px rgba(255, 140, 0, 0.45));
+}
+
+.brush-help-tag {
+  position: absolute;
+  bottom: -18px;
+  background: rgba(255, 140, 0, 0.9);
+  color: #000000;
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 2px 10px;
+  border-radius: 20px;
+  box-shadow: 0 4px 10px rgba(255, 140, 0, 0.2);
+  white-space: nowrap;
+  animation: pulseHelp 2s infinite ease-in-out;
+}
+
+@keyframes pulseHelp {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-3px) scale(1.05); }
+}
