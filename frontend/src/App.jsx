@@ -69,7 +69,13 @@ export default function App() {
   return (
     <div className="meteorite-app-root">
       
-      {/* 1. Twinkling Stars Background */}
+      {/* 1. Full-screen Background Photo with overlay */}
+      <div className="bg-photo-wrapper">
+        <img src={userPic} alt="Cosmic Background" className="bg-photo" />
+        <div className="bg-photo-overlay" />
+      </div>
+
+      {/* 2. Twinkling Stars Background */}
       <div className="stars-container">
         {STARS.map((star) => (
           <div
@@ -87,7 +93,7 @@ export default function App() {
         ))}
       </div>
 
-      {/* 2. Automated Shooting Stars / Meteorites */}
+      {/* 3. Automated Shooting Stars / Meteorites */}
       <div className="shooting-stars-container">
         <div className="meteorite met-1" />
         <div className="meteorite met-2" />
@@ -95,7 +101,7 @@ export default function App() {
         <div className="meteorite met-4" />
       </div>
 
-      {/* 3. Drag-Trail Particle Emitter (Embers) */}
+      {/* 4. Drag-Trail Particle Emitter (Embers) */}
       {particles.map((p) => (
         <div
           key={p.id}
@@ -111,36 +117,6 @@ export default function App() {
           }}
         />
       ))}
-
-      {/* 4. Main Profile Component (Web Dev & AI Engineer Profile Card) */}
-      <div className="profile-card-wrapper">
-        <div className="profile-card paper-texture">
-          <div className="profile-pic-border">
-            <div className="profile-pic-container">
-              <img src={userPic} alt="Udit Kumar" className="profile-pic" />
-            </div>
-          </div>
-          <h1 className="profile-name">Udit Kumar</h1>
-          <p className="profile-title">Web Developer &amp; Aspiring AI Engineer</p>
-          <p className="profile-bio">
-            Building intelligent web applications, crafting interactive experiences, and training models to bridge the gap between AI and the user interface.
-          </p>
-          <div className="profile-links">
-            <a href="https://github.com" target="_blank" rel="noreferrer" title="GitHub" className="profile-link-btn">
-              <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" style={{ display: 'block' }}>
-                <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path>
-                <path d="M9 18c-4.51 2-5-2-7-2"></path>
-              </svg>
-            </a>
-            <a href="mailto:udit.kumar@example.com" title="Email Udit" className="profile-link-btn">
-              <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" style={{ display: 'block' }}>
-                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                <polyline points="22,6 12,13 2,6"></polyline>
-              </svg>
-            </a>
-          </div>
-        </div>
-      </div>
 
       {/* 5. Draggable Paintbrush (Floating on top) */}
       <DraggableBrush onMove={handleBrushMove} />
