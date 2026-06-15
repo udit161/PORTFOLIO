@@ -1,16 +1,18 @@
 :root {
   --text: #d0cbd6;
   --text-h: #ffffff;
-  --bg: #06060c; /* Deep Space Black */
+  --bg: #06060c;
+  /* Deep Space Black */
   --border: rgba(255, 255, 255, 0.08);
   --code-bg: #100d20;
-  --accent: #ff8c00; /* Burning Meteor Orange */
+  --accent: #ff8c00;
+  /* Burning Meteor Orange */
   --accent-bg: rgba(255, 140, 0, 0.12);
   --accent-border: rgba(255, 140, 0, 0.4);
   --social-bg: rgba(255, 255, 255, 0.04);
   --shadow: rgba(0, 0, 0, 0.6) 0 15px 35px -5px, rgba(0, 0, 0, 0.4) 0 5px 15px -3px;
 
-  --sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --sans: 'Oi', serif;
   --heading: 'Playfair Display', Georgia, serif;
   --handwritten: 'Caveat', cursive;
   --mono: ui-monospace, Consolas, monospace;
@@ -44,13 +46,16 @@ body {
   width: 8px;
   height: 8px;
 }
+
 ::-webkit-scrollbar-track {
   background: var(--bg);
 }
+
 ::-webkit-scrollbar-thumb {
   background: rgba(255, 255, 255, 0.15);
   border-radius: 4px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
   background: var(--accent-border);
 }
@@ -64,7 +69,10 @@ body {
   flex-direction: column;
 }
 
-h1, h2, h3, h4 {
+h1,
+h2,
+h3,
+h4 {
   font-family: var(--heading);
   font-weight: 600;
   color: var(--text-h);
@@ -101,7 +109,7 @@ code {
   border: 1px solid var(--border);
 }
 
-/* Utility handwritten text classes */
+
 .handwritten {
   font-family: var(--handwritten);
   font-size: 1.4rem;

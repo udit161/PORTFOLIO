@@ -24,9 +24,9 @@
 
 .wix-portfolio-container {
   display: grid;
-  grid-template-columns: minmax(500px, 1.3fr) 1fr;
+  grid-template-columns: minmax(600px, 1.3fr) 1fr;
   gap: 80px;
-  max-width: 1100px;
+  max-width: 1320px;
   width: 100%;
   align-items: start;
   flex-grow: 1;
@@ -44,7 +44,7 @@
    ========================================================================== */
 .profile-block {
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;
 
   @media (max-width: 900px) {
     justify-content: center;
@@ -52,31 +52,113 @@
 }
 
 .lavender-card {
-  background-color: #a899f0; /* Classic Wix Lavender */
-  border-radius: 4px;
-  padding: 48px;
+  background: transparent;
+  border-radius: 24px;
+  padding: 58px;
   width: 100%;
-  max-width: 570px;
+  max-width: 684px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   position: relative;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.85), inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
 
   @media (max-width: 480px) {
     padding: 30px 20px;
   }
 }
 
+/* Floating neon cyan blob */
+.lavender-card::before {
+  content: "";
+  position: absolute;
+  top: -10%;
+  right: -10%;
+  width: 280px;
+  height: 280px;
+  background: radial-gradient(circle, rgba(0, 206, 201, 0.45) 0%, rgba(0, 206, 201, 0) 70%);
+  border-radius: 50%;
+  filter: blur(40px);
+  z-index: 0;
+  pointer-events: none;
+  animation: float-blob-1 12s infinite alternate ease-in-out;
+}
+
+/* Floating neon yellow/gold blob */
+.lavender-card::after {
+  content: "";
+  position: absolute;
+  bottom: -10%;
+  left: -10%;
+  width: 320px;
+  height: 320px;
+  background: radial-gradient(circle, rgba(253, 203, 110, 0.4) 0%, rgba(253, 203, 110, 0) 70%);
+  border-radius: 50%;
+  filter: blur(50px);
+  z-index: 0;
+  pointer-events: none;
+  animation: float-blob-2 15s infinite alternate ease-in-out;
+}
+
+/* Pixelated Destruction Canvas Overlay */
+.card-destruction-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  border-radius: 24px;
+}
+
+/* Rotating Decorative Accent Ring */
+.lavender-card-accent {
+  position: absolute;
+  top: 35px;
+  right: 35px;
+  width: 90px;
+  height: 90px;
+  border: 1px dashed rgba(255, 255, 255, 0.35);
+  border-radius: 50%;
+  z-index: 2;
+  pointer-events: none;
+  animation: spin-slow 25s linear infinite;
+}
+
+.lavender-card:hover {
+  transform: translateY(-8px) rotate(0.5deg);
+  box-shadow: 0 40px 90px rgba(0, 0, 0, 0.95), inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes float-blob-1 {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(-40px, 30px) scale(1.15); }
+}
+
+@keyframes float-blob-2 {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(50px, -40px) scale(1.1); }
+}
+
 .hello-title {
-  font-family: var(--sans);
-  font-size: 6.5rem;
-  font-weight: 800;
-  color: #1a1a1a;
+  font-family: "Bitcount Grid Double", system-ui;
+  font-optical-sizing: auto;
+  font-size: 7.8rem;
+  font-weight: 400;
+  color: #32CD32;
   margin: 0 0 24px 0;
   line-height: 0.9;
   letter-spacing: -0.03em;
+  font-variation-settings: "slnt" 0, "CRSV" 0.5, "ELSH" 0, "ELXP" 0;
+  position: relative;
+  z-index: 3;
 
   @media (max-width: 480px) {
     font-size: 5rem;
@@ -85,9 +167,10 @@
 
 .photo-container-wrapper {
   position: relative;
-  width: 340px;
-  height: 340px;
+  width: 408px;
+  height: 408px;
   margin-bottom: 32px;
+  z-index: 3;
 
   @media (max-width: 480px) {
     width: 220px;
@@ -152,24 +235,30 @@
 .name-title-container {
   text-align: left;
   margin-top: 10px;
+  position: relative;
+  z-index: 3;
 }
 
 .profile-name {
-  font-family: var(--sans);
-  font-size: 2rem;
-  font-weight: 800;
-  color: #1a1a1a;
+  font-family: "Bitcount Grid Double", system-ui;
+  font-optical-sizing: auto;
+  font-size: 2.4rem;
+  font-weight: 400;
+  color: #ffffff;
   margin: 0 0 6px 0;
   line-height: 1.1;
   letter-spacing: -0.01em;
+  font-variation-settings: "slnt" 0, "CRSV" 0.5, "ELSH" 0, "ELXP" 0;
 }
 
 .profile-title {
-  font-family: var(--sans);
-  font-size: 0.95rem;
-  font-weight: 550;
-  color: #1a1a1a;
+  font-family: "Bitcount Grid Double", system-ui;
+  font-optical-sizing: auto;
+  font-size: 1.15rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.8);
   margin: 0;
+  font-variation-settings: "slnt" 0, "CRSV" 0.5, "ELSH" 0, "ELXP" 0;
 }
 
 /* ==========================================================================
@@ -432,6 +521,86 @@ a.footer-val:hover {
   animation: shoot 14s infinite ease-in-out;
   animation-delay: 7s;
   width: 120px;
+}
+
+.met-5 {
+  top: 20%;
+  right: 30%;
+  animation: shoot 9s infinite ease-in-out;
+  animation-delay: 3s;
+  width: 90px;
+  filter: drop-shadow(0 0 6px #00f5ff);
+  background: linear-gradient(90deg, rgba(0, 245, 255, 1) 0%, rgba(0, 245, 255, 0.4) 30%, rgba(255, 255, 255, 0) 100%);
+}
+
+.met-6 {
+  top: 45%;
+  right: 20%;
+  animation: shoot 13s infinite ease-in-out;
+  animation-delay: 5s;
+  width: 140px;
+  filter: drop-shadow(0 0 8px #ff2a2a);
+  background: linear-gradient(90deg, rgba(255, 42, 42, 1) 0%, rgba(255, 42, 42, 0.4) 30%, rgba(255, 255, 255, 0) 100%);
+}
+
+.met-7 {
+  top: 70%;
+  right: 55%;
+  animation: shoot 6s infinite ease-in-out;
+  animation-delay: 1.5s;
+  width: 70px;
+  filter: drop-shadow(0 0 5px #ffd700);
+  background: linear-gradient(90deg, rgba(255, 215, 0, 1) 0%, rgba(255, 215, 0, 0.4) 30%, rgba(255, 255, 255, 0) 100%);
+}
+
+.met-8 {
+  top: 5%;
+  right: 80%;
+  animation: shoot 15s infinite ease-in-out;
+  animation-delay: 8s;
+  width: 110px;
+  filter: drop-shadow(0 0 6px #e0aaff);
+  background: linear-gradient(90deg, rgba(224, 170, 255, 1) 0%, rgba(224, 170, 255, 0.4) 30%, rgba(255, 255, 255, 0) 100%);
+}
+
+.met-9 {
+  top: 50%;
+  right: 75%;
+  animation: shoot 10s infinite ease-in-out;
+  animation-delay: 2.5s;
+  width: 130px;
+  filter: drop-shadow(0 0 7px #0984e3);
+  background: linear-gradient(90deg, rgba(9, 132, 227, 1) 0%, rgba(9, 132, 227, 0.4) 30%, rgba(255, 255, 255, 0) 100%);
+}
+
+.met-10 {
+  top: 25%;
+  right: 45%;
+  animation: shoot 7.5s infinite ease-in-out;
+  animation-delay: 6.2s;
+  width: 95px;
+  filter: drop-shadow(0 0 6px #fd79a8);
+  background: linear-gradient(90deg, rgba(253, 121, 168, 1) 0%, rgba(253, 121, 168, 0.4) 30%, rgba(255, 255, 255, 0) 100%);
+}
+
+.met-11 {
+  top: 80%;
+  right: 15%;
+  animation: shoot 11.5s infinite ease-in-out;
+  animation-delay: 3.8s;
+  width: 85px;
+  filter: drop-shadow(0 0 5px #00b894);
+  background: linear-gradient(90deg, rgba(0, 184, 148, 1) 0%, rgba(0, 184, 148, 0.4) 30%, rgba(255, 255, 255, 0) 100%);
+}
+
+.met-12 {
+  top: 65%;
+  right: 85%;
+  animation: shoot 14s infinite ease-in-out;
+  animation-delay: 9s;
+  width: 120px;
+  filter: drop-shadow(0 0 7px #e17055);
+  background: linear-gradient(90deg, rgba(225, 112, 85, 1) 0%, rgba(225, 112, 85, 0.4) 30%, rgba(255, 255, 255, 0) 100%);
 }
 
 @keyframes shoot {
