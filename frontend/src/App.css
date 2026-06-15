@@ -107,7 +107,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 12%; /* Shift crop up to center on your face */
+  object-position: center top; /* Align to top to make hair fully visible */
   border-radius: 12px;
   display: block;
 }
