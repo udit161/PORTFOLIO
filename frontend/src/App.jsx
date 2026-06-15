@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import DraggableBrush from './components/DraggableBrush';
-import userPic from './assets/user_pic.jpg';
+import userPicNoBg from './assets/user_pic_no_bg.png';
 import './App.css';
 
 // Pre-generate static stars for performance
@@ -69,10 +69,9 @@ export default function App() {
   return (
     <div className="meteorite-app-root">
       
-      {/* 1. Full-screen Background Photo with overlay */}
-      <div className="bg-photo-wrapper">
-        <img src={userPic} alt="Cosmic Background" className="bg-photo" />
-        <div className="bg-photo-overlay" />
+      {/* 1. Full-screen Transparent Portrait Backdrop */}
+      <div className="portrait-container">
+        <img src={userPicNoBg} alt="Udit Kumar" className="portrait-image" />
       </div>
 
       {/* 2. Twinkling Stars Background */}
@@ -117,6 +116,11 @@ export default function App() {
           }}
         />
       ))}
+
+      {/* 5. Animated Header text coming from above head */}
+      <div className="cosmic-header-container">
+        <h1 className="cosmic-heading">Hi, I am Udit Kumar</h1>
+      </div>
 
       {/* 5. Draggable Paintbrush (Floating on top) */}
       <DraggableBrush onMove={handleBrushMove} />
