@@ -1,17 +1,12 @@
 import { useRef, useEffect } from 'react';
 import userPic from './assets/user_pic.jpg';
 import topoPattern from './assets/topo_pattern.png';
+import BioBlock from './components/BioBlock';
+import BioButtons from './components/BioButtons';
+import BlackholeBackground from './components/BlackholeBackground';
 import './App.css';
 
-// Pre-generate static stars for performance
-const STARS = Array.from({ length: 80 }).map((_, i) => ({
-  id: i,
-  left: `${Math.random() * 100}%`,
-  top: `${Math.random() * 100}%`,
-  size: Math.random() * 2 + 1,
-  delay: `${Math.random() * 8}s`,
-  duration: `${Math.random() * 4 + 3}s`,
-}));
+
 
 export default function App() {
   const canvasRef = useRef(null);
@@ -20,6 +15,10 @@ export default function App() {
   const holesRef = useRef([]);
   const isOverPhotoRef = useRef(false);
   const topoImgRef = useRef(null);
+
+  useEffect(() => {
+    window.scrollTo(0, 0); // Reset scroll to top on mount
+  }, []);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -229,39 +228,8 @@ export default function App() {
   return (
     <div className="wix-portfolio-root">
 
-      {/* 1. Twinkling Stars Background */}
-      <div className="stars-container">
-        {STARS.map((star) => (
-          <div
-            key={star.id}
-            className="star"
-            style={{
-              left: star.left,
-              top: star.top,
-              width: `${star.size}px`,
-              height: `${star.size}px`,
-              animationDelay: star.delay,
-              animationDuration: star.duration,
-            }}
-          />
-        ))}
-      </div>
-
-      {/* 2. Automated Shooting Stars / Meteorites */}
-      <div className="shooting-stars-container">
-        <div className="meteorite met-1" />
-        <div className="meteorite met-2" />
-        <div className="meteorite met-3" />
-        <div className="meteorite met-4" />
-        <div className="meteorite met-5" />
-        <div className="meteorite met-6" />
-        <div className="meteorite met-7" />
-        <div className="meteorite met-8" />
-        <div className="meteorite met-9" />
-        <div className="meteorite met-10" />
-        <div className="meteorite met-11" />
-        <div className="meteorite met-12" />
-      </div>
+      {/* Black Hole Background Simulation */}
+      <BlackholeBackground />
 
       <div className="wix-portfolio-container">
 
@@ -310,29 +278,18 @@ export default function App() {
               </div>
             </div>
 
+
             <div className="name-title-container">
               <h2 className="profile-name">Udit Kumar</h2>
-              <p className="profile-title">MERN Stack Developer &amp; AI & Data Science Enthusiast</p>
+              <p className="profile-title">MERN Stack Developer &amp; AI & Machine Learning Enthusiast | React • Node.js • Python | Building Data-Driven Web Applications</p>
             </div>
           </div>
         </div>
 
         {/* Right Column: Bio / Intro Block */}
-        <div className="intro-block">
-          <div className="intro-content">
-            <h1 className="intro-heading">A bit about me</h1>
-            <p className="intro-paragraph">
-              "Welcome to my digital workspace. I am a full-stack developer who loves turning complex problems into intuitive web solutions. My expertise lies in the MERN stack and Python, but my true passion is building applications that actively engage users and leverage data. Whether I am architecting a student social networking platform like Vartalaap, designing RESTful APIs, or experimenting with RAG pipelines and model training, I am always focused on writing clean code and building scalable products.
-
-            </p>
-
-            <div className="intro-actions">
-              <a href="#resume" className="pill-btn primary">Resume</a>
-              <a href="#projects" className="pill-btn secondary">Projects</a>
-              <a href="#certifications" className="pill-btn secondary">Certifications</a>
-            </div>
-          </div>
-        </div>
+        <BioBlock>
+          <BioButtons />
+        </BioBlock>
 
       </div>
 
