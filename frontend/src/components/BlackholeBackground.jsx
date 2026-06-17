@@ -77,21 +77,7 @@ export default function BlackholeBackground() {
     };
     const fallers = Array.from({ length: NUM_INFALL }, makeFaller);
 
-    // ── Relativistic jets ────────────────────────────────────────
-    const NUM_JET = 60;
-    const makeJetParticle = (dir) => ({
-      x: 0, y: 0,
-      vy: (Math.random() * 4 + 2) * dir,
-      vx: (Math.random() - 0.5) * 0.8,
-      alpha: 0.9,
-      r: Math.random() * 2.5 + 0.5,
-      life: 1,
-      decay: Math.random() * 0.012 + 0.006,
-    });
-    const jets = [
-      ...Array.from({ length: NUM_JET }, () => makeJetParticle(-1)),
-      ...Array.from({ length: NUM_JET }, () => makeJetParticle(1)),
-    ];
+    // ── Relativistic jets removed per user request ──────────────
 
     let t = 0;
 
@@ -122,31 +108,7 @@ export default function BlackholeBackground() {
         ctx.fill();
       }
 
-      // ── Relativistic jets (vertical glowing beams) ───────────
-      for (const j of jets) {
-        j.x += j.vx;
-        j.y += j.vy;
-        j.alpha -= j.decay;
-        j.life -= j.decay;
-
-        if (j.life <= 0) {
-          const dir = j.vy < 0 ? -1 : 1;
-          Object.assign(j, makeJetParticle(dir));
-          j.x = center.x + (Math.random() - 0.5) * 12;
-          j.y = center.y;
-        }
-
-        const jx = center.x + j.x;
-        const jy = center.y + j.y;
-
-        const jGrad = ctx.createRadialGradient(jx, jy, 0, jx, jy, j.r * 4);
-        jGrad.addColorStop(0, `rgba(120,200,255,${j.alpha})`);
-        jGrad.addColorStop(1, 'rgba(60,140,255,0)');
-        ctx.beginPath();
-        ctx.arc(jx, jy, j.r * 4, 0, Math.PI * 2);
-        ctx.fillStyle = jGrad;
-        ctx.fill();
-      }
+      // ── Relativistic jets rendering removed ──────────────────
 
       // ── Accretion disk ────────────────────────────────────────
       for (const p of diskParticles) {

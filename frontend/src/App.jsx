@@ -263,15 +263,17 @@ export default function App() {
                       <circle cx="4" cy="4" r="2"></circle>
                     </svg>
                   </a>
-                  <a href="mailto:udit56579@email.com" title="Email" className="social-badge-item">
+                  <a href="https://mail.google.com/mail/?view=cm&fs=1&to=udit56579@gmail.com" target="_blank" rel="noreferrer" title="Email" className="social-badge-item">
                     <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                       <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
                       <polyline points="22,6 12,13 2,6"></polyline>
                     </svg>
                   </a>
-                  <a href="https://x.com" target="_blank" rel="noreferrer" title="X" className="social-badge-item">
+                  <a href="https://www.instagram.com/the.sketch.man66/" target="_blank" rel="noreferrer" title="Instagram" className="social-badge-item">
                     <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                      <path d="M4 4l11.733 16h4.267l-11.733 -16z M4 20l6.768 -6.768 M20 20l-6.768 -6.768"></path>
+                      <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                      <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
                     </svg>
                   </a>
                 </div>
@@ -302,9 +304,9 @@ export default function App() {
 
         <div className="footer-col col-contact">
           <p className="footer-label">Email</p>
-          <a href="mailto:udit56579@email.com" className="footer-val">udit56579@email.com</a>
+          <a href="https://mail.google.com/mail/?view=cm&fs=1&to=udit56579@gmail.com" target="_blank" rel="noreferrer" className="footer-val">udit56579@gmail.com</a>
           <p className="footer-label" style={{ marginTop: '16px' }}>Phone</p>
-          <p className="footer-val">123-456-7890</p>
+          <p className="footer-val">+91 7388913200</p>
         </div>
 
         <div className="footer-col col-social">
@@ -312,8 +314,8 @@ export default function App() {
           <div className="footer-social-links">
             <a href="https://github.com/udit161" target="_blank" rel="noreferrer">GitHub</a>
             <a href="https://www.linkedin.com/in/udit-kumar-9aa031376" target="_blank" rel="noreferrer">LinkedIn</a>
-            <a href="https://x.com" target="_blank" rel="noreferrer">X</a>
-            <a href="udit56579@email.com">Email</a>
+            <a href="https://www.instagram.com/the.sketch.man66/" target="_blank" rel="noreferrer">Instagram</a>
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=udit56579@gmail.com" target="_blank" rel="noreferrer">Email</a>
           </div>
         </div>
 

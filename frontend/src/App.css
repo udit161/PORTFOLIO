@@ -378,9 +378,10 @@
   justify-content: center;
   padding: 12px 32px;
   border-radius: 30px;
-  font-family: var(--sans);
-  font-size: 0.9rem;
-  font-weight: 600;
+  font-family: "Concert One", sans-serif;
+  font-size: 1.1rem;
+  font-weight: 400;
+  font-style: normal;
   text-decoration: none;
   transition: all 0.25s ease;
   cursor: pointer;
@@ -418,22 +419,30 @@
   gap: 40px;
   max-width: 1100px;
   width: 100%;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(30, 30, 45, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 24px;
   margin-top: 60px;
-  padding-top: 32px;
+  margin-bottom: 40px;
+  padding: 40px;
   text-align: left;
   box-sizing: border-box;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
 
   @media (max-width: 900px) {
     grid-template-columns: 1fr 1fr;
     gap: 36px;
     margin-top: 40px;
+    padding: 30px;
   }
 
   @media (max-width: 550px) {
     grid-template-columns: 1fr;
     gap: 28px;
     margin-top: 30px;
+    padding: 24px;
   }
 }
 
@@ -444,8 +453,8 @@
 
 .col-links a {
   color: #ffffff;
-  font-family: var(--sans);
-  font-size: 0.9rem;
+  font-family: "Inter", sans-serif;
+  font-size: 0.95rem;
   text-decoration: underline;
   margin-bottom: 12px;
   transition: color 0.2s;
@@ -456,19 +465,19 @@
 }
 
 .footer-label {
-  font-family: var(--sans);
-  font-size: 0.75rem;
-  font-weight: 700;
+  font-family: "Concert One", sans-serif;
+  font-size: 1.1rem;
+  font-weight: 400;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: rgba(255, 255, 255, 0.5);
-  margin: 0 0 8px 0;
+  color: #c2a43f;
+  margin: 0 0 12px 0;
 }
 
 .footer-val {
   color: #ffffff;
-  font-family: var(--sans);
-  font-size: 0.9rem;
+  font-family: "Inter", sans-serif;
+  font-size: 0.95rem;
   text-decoration: none;
   margin: 0;
 }
@@ -481,25 +490,27 @@ a.footer-val:hover {
 .footer-social-links {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
 }
 
 .footer-social-links a {
   color: #ffffff;
-  font-family: var(--sans);
-  font-size: 0.9rem;
+  font-family: "Inter", sans-serif;
+  font-size: 0.95rem;
   text-decoration: none;
   width: fit-content;
+  transition: all 0.2s ease;
 }
 
 .footer-social-links a:hover {
   text-decoration: underline;
   color: #c2a43f;
+  transform: translateX(4px);
 }
 
 .copyright-text {
-  color: rgba(255, 255, 255, 0.5);
-  font-family: var(--sans);
+  color: rgba(255, 255, 255, 0.6);
+  font-family: "Inter", sans-serif;
   font-size: 0.85rem;
   line-height: 1.6;
   margin: 0;
