@@ -4,6 +4,7 @@ import topoPattern from './assets/topo_pattern.png';
 import BioBlock from './components/BioBlock';
 import BioButtons from './components/BioButtons';
 import BlackholeBackground from './components/BlackholeBackground';
+import Logo from './components/Logo';
 import './App.css';
 
 
@@ -17,7 +18,7 @@ export default function App() {
   const topoImgRef = useRef(null);
 
   useEffect(() => {
-    window.scrollTo(0, 0); // Reset scroll to top on mount
+    window.scrollTo(0, 0);
   }, []);
 
   useEffect(() => {
@@ -27,7 +28,6 @@ export default function App() {
 
     const ctx = canvas.getContext('2d');
 
-    // Load topographic pattern image
     const img = new Image();
     img.src = topoPattern;
     img.onload = () => {
@@ -60,7 +60,7 @@ export default function App() {
     const colors = ['#ffffff', '#f1f5f9', '#cbd5e1', '#94a3b8', '#64748b', '#475569', '#334155', '#1e293b', '#000000'];
 
     const createParticleAndHole = (x, y) => {
-      // 1. Spawning flying debris particles
+
       const count = Math.floor(Math.random() * 3) + 3;
       for (let i = 0; i < count; i++) {
         particlesRef.current.push({
@@ -76,21 +76,19 @@ export default function App() {
         });
       }
 
-      // 2. Spawning destruction hole in background
+
       holesRef.current.push({
         x: x,
         y: y,
         radius: 8,
         maxRadius: 28 + Math.random() * 12,
         alpha: 1.0,
-        decay: 0.008 + Math.random() * 0.006 // slow healing to reveal background
+        decay: 0.008 + Math.random() * 0.006
       });
     };
 
     const drawCardBackground = (ctx, w, h) => {
       ctx.save();
-
-      // Rounded Card shape clipping path
       ctx.beginPath();
       ctx.roundRect(0, 0, w, h, 24);
       ctx.clip();
@@ -119,8 +117,6 @@ export default function App() {
       }
 
       ctx.restore();
-
-      // Draw grid dot pattern
       ctx.save();
       ctx.fillStyle = 'rgba(255, 255, 255, 0.08)';
       const spacing = 24;
@@ -132,8 +128,6 @@ export default function App() {
         }
       }
       ctx.restore();
-
-      // Border stroke
       ctx.save();
       ctx.beginPath();
       ctx.roundRect(0, 0, w, h, 24);
@@ -150,10 +144,9 @@ export default function App() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       ctx.restore();
 
-      // 1. Draw solid gradient background and grid pattern at logical bounds
       drawCardBackground(ctx, logicalW, logicalH);
 
-      // 2. Apply Composite Operation for transparent holes
+
       ctx.save();
       ctx.globalCompositeOperation = 'destination-out';
       const holes = holesRef.current;
@@ -178,8 +171,6 @@ export default function App() {
         ctx.fill();
       }
       ctx.restore();
-
-      // 3. Draw flying debris on top of the holes
       ctx.save();
       ctx.globalCompositeOperation = 'source-over';
       const particles = particlesRef.current;
@@ -227,13 +218,17 @@ export default function App() {
 
   return (
     <div className="wix-portfolio-root">
-
-      {/* Black Hole Background Simulation */}
       <BlackholeBackground />
+      
+      <header className="portfolio-header">
+        <div className="logo-container">
+          <Logo />
+        </div>
+      </header>
 
       <div className="wix-portfolio-container">
 
-        {/* Left Column: Lavender Card Block */}
+
         <div className="profile-block">
           <div className="lavender-card" ref={cardRef}>
             <canvas ref={canvasRef} className="card-destruction-canvas" />
@@ -248,7 +243,6 @@ export default function App() {
               <div className="photo-container">
                 <img src={userPic} alt="Udit Kumar" className="photo-img" />
 
-                {/* Social media grid overlapping the image */}
                 <div className="social-badge-grid">
                   <a href="https://github.com/udit161" target="_blank" rel="noreferrer" title="GitHub" className="social-badge-item">
                     <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -288,20 +282,15 @@ export default function App() {
           </div>
         </div>
 
-        {/* Right Column: Bio / Intro Block */}
+
         <BioBlock>
           <BioButtons />
         </BioBlock>
 
       </div>
 
-      {/* Footer */}
-      <footer className="portfolio-footer">
-        <div className="footer-col col-links">
-          <a href="#privacy">Privacy Policy</a>
-          <a href="#accessibility">Accessibility Statement</a>
-        </div>
 
+      <footer className="portfolio-footer">
         <div className="footer-col col-contact">
           <p className="footer-label">Email</p>
           <a href="https://mail.google.com/mail/?view=cm&fs=1&to=udit56579@gmail.com" target="_blank" rel="noreferrer" className="footer-val">udit56579@gmail.com</a>
