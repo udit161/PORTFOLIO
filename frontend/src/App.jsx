@@ -4,6 +4,7 @@ import topoPattern from './assets/topo_pattern.png';
 import BioBlock from './components/BioBlock';
 import BioButtons from './components/BioButtons';
 import BlackholeBackground from './components/BlackholeBackground';
+import ProjectsSection from './components/ProjectsSection';
 import Logo from './components/Logo';
 import './App.css';
 
@@ -289,6 +290,7 @@ export default function App() {
 
       </div>
 
+      <ProjectsSection />
 
       <footer className="portfolio-footer">
         <div className="footer-col col-contact">
