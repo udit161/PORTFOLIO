@@ -157,8 +157,7 @@ export default function ProjectsSection() {
   return (
     <section id="projects" className="projects-section" ref={sectionRef}>
       <div className={`projects-heading-group ${isHeadingVisible ? 'projects-heading-group--visible' : ''}`}>
-        <span className="projects-section-label">Portfolio</span>
-        <h2 className="projects-section-title">Featured Projects</h2>
+        <h1 className="projects-section-title">Featured Projects</h1>
         <div className="projects-section-divider" />
       </div>
 
