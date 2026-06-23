@@ -1,4 +1,5 @@
 import { useRef, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import userPic from '../assets/user_pic.jpg';
 import topoPattern from '../assets/topo_pattern.png';
 import BioBlock from '../components/BioBlock';
@@ -8,6 +9,7 @@ import ProjectsSection from '../components/ProjectsSection';
 import Logo from '../components/Logo';
 
 export default function Home() {
+  const navigate = useNavigate();
   const canvasRef = useRef(null);
   const cardRef = useRef(null);
   const particlesRef = useRef([]);
@@ -236,9 +238,7 @@ export default function Home() {
               className="ghost-brush-btn"
               title="Paint tool"
               aria-label="Activate paintbrush"
-              onClick={() => {
-                // Could toggle a brush mode, for now just a subtle interactive element
-              }}
+              onClick={() => navigate('/paint')}
             >
               <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" className="ghost-brush-svg">
                 {/* Handle */}
