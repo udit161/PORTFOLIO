@@ -1,4 +1,4 @@
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import userPic from '../assets/user_pic.jpg';
 import topoPattern from '../assets/topo_pattern.png';
@@ -10,6 +10,7 @@ import Logo from '../components/Logo';
 
 export default function Home() {
   const navigate = useNavigate();
+  const [showBrushPopup, setShowBrushPopup] = useState(false);
   const canvasRef = useRef(null);
   const cardRef = useRef(null);
   const particlesRef = useRef([]);
@@ -238,7 +239,7 @@ export default function Home() {
               className="ghost-brush-btn"
               title="Paint tool"
               aria-label="Activate paintbrush"
-              onClick={() => navigate('/paint')}
+              onClick={() => setShowBrushPopup(true)}
             >
               <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" className="ghost-brush-svg">
                 {/* Handle */}
@@ -308,6 +309,27 @@ export default function Home() {
       </div>
 
       <ProjectsSection />
+
+      {/* Brush popup modal */}
+      {showBrushPopup && (
+        <div className="brush-popup-overlay" onClick={() => setShowBrushPopup(false)}>
+          <div className="brush-popup" onClick={(e) => e.stopPropagation()}>
+            <span className="brush-popup-emoji">🎨</span>
+            <h3 className="brush-popup-title">I'm an artist at heart!</h3>
+            <p className="brush-popup-text">
+              Art is my way of expressing what words can't. Want to see what that feels like? Grab a brush and create something of your own!
+            </p>
+            <div className="brush-popup-actions">
+              <button className="brush-popup-btn primary" onClick={() => { setShowBrushPopup(false); navigate('/paint'); }}>
+                Let's Paint!
+              </button>
+              <button className="brush-popup-btn secondary" onClick={() => setShowBrushPopup(false)}>
+                Maybe Later
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       <footer className="portfolio-footer">
         <div className="footer-col col-contact">
