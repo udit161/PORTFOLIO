@@ -237,6 +237,107 @@
   filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.08));
 }
 
+/* Brush popup modal */
+.brush-popup-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  animation: lightboxFadeIn 0.3s ease forwards;
+}
+
+.brush-popup {
+  background: rgba(20, 20, 40, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 24px;
+  padding: 40px 36px 32px;
+  max-width: 420px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(194, 164, 63, 0.08);
+  animation: brushPopupIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes brushPopupIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.brush-popup-emoji {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.brush-popup-title {
+  font-family: "Titan One", sans-serif;
+  font-weight: 400;
+  font-size: 1.5rem;
+  color: #ffffff;
+  margin: 0 0 12px 0;
+}
+
+.brush-popup-text {
+  font-family: "Noto Sans", sans-serif;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0 0 24px 0;
+}
+
+.brush-popup-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.brush-popup-btn {
+  padding: 12px 28px;
+  border-radius: 12px;
+  font-family: "Concert One", sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  border: 2px solid transparent;
+}
+
+.brush-popup-btn.primary {
+  background: linear-gradient(135deg, #c2a43f, #d4b84a);
+  color: #1a1a1a;
+  border-color: #c2a43f;
+}
+
+.brush-popup-btn.primary:hover {
+  background: transparent;
+  color: #c2a43f;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(194, 164, 63, 0.3);
+}
+
+.brush-popup-btn.secondary {
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.6);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.brush-popup-btn.secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
 @keyframes float-blob-1 {
   0% { transform: translate(0, 0) scale(1); }
   100% { transform: translate(-40px, 30px) scale(1.15); }
