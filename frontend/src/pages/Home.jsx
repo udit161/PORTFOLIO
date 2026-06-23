@@ -231,6 +231,26 @@ export default function Home() {
           <div className="lavender-card" ref={cardRef}>
             <canvas ref={canvasRef} className="card-destruction-canvas" />
             <div className="lavender-card-accent" />
+            {/* Ghost paintbrush button — barely visible */}
+            <button
+              className="ghost-brush-btn"
+              title="Paint tool"
+              aria-label="Activate paintbrush"
+              onClick={() => {
+                // Could toggle a brush mode, for now just a subtle interactive element
+              }}
+            >
+              <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" className="ghost-brush-svg">
+                {/* Handle */}
+                <path d="M12 52 L32 32 L36 36 L16 56 Z" fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.18)" strokeWidth="1" />
+                {/* Ferrule */}
+                <path d="M32 32 L40 24 L44 28 L36 36 Z" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.2)" strokeWidth="1" />
+                {/* Bristles */}
+                <path d="M40 24 C44 16 48 12 56 8 C52 16 48 22 44 28 Z" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.18)" strokeWidth="1" />
+                {/* Tip glow */}
+                <path d="M48 16 C50 12 54 10 56 8 C54 10 52 14 48 16 Z" fill="rgba(255,255,255,0.2)" />
+              </svg>
+            </button>
             <h1 className="hello-title">Hi, </h1>
 
             <div

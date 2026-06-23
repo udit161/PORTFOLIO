@@ -201,6 +201,42 @@
   to { transform: rotate(360deg); }
 }
 
+/* Ghost paintbrush button — barely visible easter egg */
+.ghost-brush-btn {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  width: 90px;
+  height: 90px;
+  border: none;
+  background: none;
+  padding: 0;
+  z-index: 3;
+  cursor: pointer;
+  opacity: 0.15;
+  transition: opacity 0.5s ease, transform 0.4s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+}
+
+.ghost-brush-btn:hover {
+  opacity: 0.35;
+  transform: scale(1.1) rotate(-8deg);
+}
+
+.ghost-brush-btn:active {
+  opacity: 0.5;
+  transform: scale(0.95);
+}
+
+.ghost-brush-svg {
+  width: 54px;
+  height: 54px;
+  filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.08));
+}
+
 @keyframes float-blob-1 {
   0% { transform: translate(0, 0) scale(1); }
   100% { transform: translate(-40px, 30px) scale(1.15); }
