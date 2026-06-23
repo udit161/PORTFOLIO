@@ -315,7 +315,7 @@ export default function Home() {
         <div className="brush-popup-overlay" onClick={() => setShowBrushPopup(false)}>
           <div className="brush-popup" onClick={(e) => e.stopPropagation()}>
             <span className="brush-popup-emoji">🎨</span>
-            <h3 className="brush-popup-title">I'm an artist at heart!</h3>
+            <h3 className="brush-popup-title">I sketch in my free time!</h3>
             <p className="brush-popup-text">
               Art is my way of expressing what words can't. Want to see what that feels like? Grab a brush and create something of your own!
             </p>
