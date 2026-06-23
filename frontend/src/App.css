@@ -1375,3 +1375,211 @@ a.footer-val:hover {
     transform: scale(1);
   }
 }
+
+/* ==========================================================================
+   Paint Page
+   ========================================================================== */
+.paint-page {
+  position: fixed;
+  inset: 0;
+  background: #060610;
+  overflow: hidden;
+}
+
+.paint-canvas {
+  position: absolute;
+  inset: 0;
+  cursor: crosshair;
+  touch-action: none;
+}
+
+/* Top bar */
+.paint-top-bar {
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  z-index: 100;
+  animation: fadeIn 0.6s ease forwards;
+}
+
+.paint-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: rgba(255, 255, 255, 0.6);
+  font-family: "Inter", sans-serif;
+  font-size: 0.85rem;
+  text-decoration: none;
+  padding: 8px 14px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: all 0.25s ease;
+}
+
+.paint-back-link:hover {
+  color: #c2a43f;
+  border-color: rgba(194, 164, 63, 0.3);
+  background: rgba(194, 164, 63, 0.08);
+  transform: translateX(-2px);
+}
+
+.paint-title {
+  font-family: "Titan One", sans-serif;
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 400;
+}
+
+/* Floating toolbar */
+.paint-toolbar {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 12px 20px;
+  background: rgba(20, 20, 35, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+  z-index: 100;
+  animation: fadeIn 0.6s ease 0.1s both;
+}
+
+.paint-tool-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.paint-tool-label {
+  font-family: "Orbitron", sans-serif;
+  font-size: 0.55rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.35);
+}
+
+/* Color swatches */
+.paint-color-row {
+  display: flex;
+  gap: 5px;
+}
+
+.paint-color-swatch {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  padding: 0;
+}
+
+.paint-color-swatch:hover {
+  transform: scale(1.2);
+}
+
+.paint-color-swatch.active {
+  border-color: #ffffff;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+  transform: scale(1.15);
+}
+
+/* Brush size */
+.paint-size-row {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.paint-size-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  padding: 0;
+}
+
+.paint-size-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.paint-size-btn.active {
+  background: rgba(194, 164, 63, 0.15);
+  border-color: rgba(194, 164, 63, 0.4);
+}
+
+.paint-size-dot {
+  border-radius: 50%;
+  background: #ffffff;
+  display: block;
+}
+
+/* Tool buttons */
+.paint-tools-row {
+  display: flex;
+  gap: 4px;
+}
+
+.paint-tool-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: transparent;
+  color: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  padding: 0;
+}
+
+.paint-tool-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+}
+
+.paint-tool-btn.active {
+  background: rgba(194, 164, 63, 0.15);
+  border-color: rgba(194, 164, 63, 0.4);
+  color: #c2a43f;
+}
+
+@media (max-width: 600px) {
+  .paint-toolbar {
+    flex-direction: column;
+    bottom: 12px;
+    right: 12px;
+    left: auto;
+    transform: none;
+    padding: 10px 14px;
+    gap: 12px;
+  }
+
+  .paint-color-row {
+    flex-wrap: wrap;
+    max-width: 120px;
+    justify-content: center;
+  }
+}
