@@ -1537,6 +1537,43 @@ a.footer-val:hover {
   font-weight: 400;
 }
 
+.paint-share-cta {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: rgba(255, 255, 255, 0.45);
+  font-family: "Inter", sans-serif;
+  font-size: 0.8rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  z-index: 100;
+  animation: fadeIn 0.6s ease 0.3s both;
+}
+
+.paint-share-cta svg {
+  color: rgba(255, 255, 255, 0.5);
+  transition: color 0.3s ease;
+}
+
+.paint-share-cta:hover {
+  color: #ffffff;
+  background: rgba(225, 48, 108, 0.12);
+  border-color: rgba(225, 48, 108, 0.3);
+}
+
+.paint-share-cta:hover svg {
+  color: #E1306C;
+}
+
 /* Floating toolbar */
 .paint-toolbar {
   position: fixed;
