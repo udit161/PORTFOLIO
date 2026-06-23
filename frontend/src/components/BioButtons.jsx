@@ -5,7 +5,7 @@ export default function BioButtons() {
     <div className="intro-actions">
       <a href="#resume" className="pill-btn primary">Resume</a>
       <Link to="/projects" className="pill-btn secondary">Projects</Link>
-      <a href="#certifications" className="pill-btn secondary">Certifications</a>
+      <Link to="/certifications" className="pill-btn secondary">Certifications</Link>
     </div>
   );
 }

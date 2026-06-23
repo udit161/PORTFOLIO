@@ -949,3 +949,393 @@ a.footer-val:hover {
   }
 }
 
+/* ==========================================================================
+   Certifications Page
+   ========================================================================== */
+.certs-page-content {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 40px 80px;
+  box-sizing: border-box;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @media (max-width: 900px) {
+    padding: 20px 20px 60px;
+  }
+}
+
+/* Back link */
+.certs-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: rgba(255, 255, 255, 0.6);
+  font-family: "Inter", sans-serif;
+  font-size: 0.9rem;
+  text-decoration: none;
+  align-self: flex-start;
+  margin-bottom: 40px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.03);
+  transition: all 0.3s ease;
+}
+
+.certs-back-link:hover {
+  color: #c2a43f;
+  border-color: rgba(194, 164, 63, 0.3);
+  background: rgba(194, 164, 63, 0.06);
+  transform: translateX(-4px);
+}
+
+/* Heading */
+.certs-heading-group {
+  text-align: center;
+  margin-bottom: 56px;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.certs-heading-group--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.certs-section-label {
+  font-family: "Orbitron", sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #c2a43f;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.certs-section-title {
+  font-family: "Titan One", sans-serif;
+  font-weight: 400;
+  font-size: 3rem;
+  color: #ffffff;
+  margin: 0;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+@media (max-width: 480px) {
+  .certs-section-title {
+    font-size: 2.2rem;
+  }
+}
+
+.certs-section-divider {
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, #c2a43f, #FF5F1F);
+  margin: 16px auto 0 auto;
+  border-radius: 2px;
+}
+
+/* Certificate grid */
+.certs-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  width: 100%;
+
+  @media (max-width: 500px) {
+    gap: 24px;
+  }
+}
+
+/* Certificate Card */
+.cert-card {
+  position: relative;
+  background: rgba(20, 20, 35, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  overflow: hidden;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.5s ease,
+              border-color 0.3s ease;
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+.cert-card--visible {
+  animation: certCardReveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes certCardReveal {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.cert-card:hover {
+  transform: translateY(-6px);
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.6),
+    0 0 0 1px rgba(194, 164, 63, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  border-color: rgba(194, 164, 63, 0.2);
+}
+
+/* Card glow accent */
+.cert-card-glow {
+  position: absolute;
+  top: -60px;
+  right: -60px;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(194, 164, 63, 0.15) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  transition: opacity 0.4s ease;
+  opacity: 0;
+}
+
+.cert-card:hover .cert-card-glow {
+  opacity: 1;
+}
+
+/* Certificate image */
+.cert-image-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: #0a0a14;
+  cursor: pointer;
+}
+
+.cert-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.4s ease;
+  filter: brightness(0.9) saturate(0.95);
+}
+
+.cert-card:hover .cert-image {
+  transform: scale(1.04);
+  filter: brightness(1) saturate(1);
+}
+
+/* Image overlay on hover */
+.cert-image-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  color: #ffffff;
+  font-family: "Inter", sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  z-index: 2;
+}
+
+.cert-card:hover .cert-image-overlay {
+  opacity: 1;
+}
+
+/* Certificate info block */
+.cert-info {
+  padding: 24px 28px 28px;
+  position: relative;
+  z-index: 1;
+}
+
+.cert-info-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.cert-issuer-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 14px;
+  border-radius: 20px;
+  font-family: "Orbitron", sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #c2a43f;
+  background: rgba(194, 164, 63, 0.1);
+  border: 1px solid rgba(194, 164, 63, 0.25);
+}
+
+.cert-date {
+  font-family: "Inter", sans-serif;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.cert-title {
+  font-family: "Titan One", sans-serif;
+  font-weight: 400;
+  font-size: 1.3rem;
+  color: #ffffff;
+  margin: 0 0 18px 0;
+  line-height: 1.25;
+}
+
+/* Learnings grid */
+.cert-learnings {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px 32px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+@media (max-width: 600px) {
+  .cert-learnings {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
+
+.cert-learning-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-family: "Noto Sans", sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.cert-learning-item svg {
+  flex-shrink: 0;
+  color: #c2a43f;
+  margin-top: 2px;
+}
+
+.cert-verify-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 24px;
+  border-radius: 10px;
+  font-family: "Inter", sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: #1a1a1a;
+  background: linear-gradient(135deg, #c2a43f, #d4b84a);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.cert-verify-btn:hover {
+  background: transparent;
+  color: #c2a43f;
+  border-color: #c2a43f;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(194, 164, 63, 0.3);
+}
+
+/* ==========================================================================
+   Certificate Lightbox Modal
+   ========================================================================== */
+.cert-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  cursor: pointer;
+  animation: lightboxFadeIn 0.3s ease forwards;
+  padding: 40px;
+}
+
+@keyframes lightboxFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.cert-lightbox-close {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  z-index: 10000;
+}
+
+.cert-lightbox-close:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: rotate(90deg);
+}
+
+.cert-lightbox-img {
+  max-width: 90vw;
+  max-height: 85vh;
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+  cursor: default;
+  animation: lightboxImgIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes lightboxImgIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

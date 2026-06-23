@@ -217,7 +217,7 @@ export default function Home() {
   return (
     <div className="wix-portfolio-root">
       <BlackholeBackground />
-      
+
       <header className="portfolio-header">
         <div className="logo-container">
           <Logo />
@@ -309,8 +309,7 @@ export default function Home() {
 
         <div className="footer-col col-copy">
           <p className="copyright-text">
-            &copy; 2026 by Udit Kumar.<br />
-            Powered and secured by Udit.
+            &copy; Made with Love by Udit Kumar.<br />
           </p>
         </div>
       </footer>
