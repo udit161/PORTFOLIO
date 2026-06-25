@@ -29,7 +29,7 @@ const [strokeCount, setStrokeCount] = useState(0);
 const [brushVisible, setBrushVisible] = useState(true);
 
   const handleBrushMove = (x, y) => {
-    // Create brush particles
+    
     const newParticles = Array.from({ length: 3 }).map(() => {
       const hue = Math.floor(Math.random() * 35) + 15;
       const size = Math.random() * 8 + 4;
@@ -47,20 +47,20 @@ const [brushVisible, setBrushVisible] = useState(true);
     });
     brushParticlesRef.current = [...brushParticlesRef.current, ...newParticles];
 
-    // Reveal the underlying portfolio via overlay
+    
     if (revealRef.current) {
       revealRef.current.reveal(x, y);
     }
-    // Hide guide after first interaction
+    
     setShowGuide(false);
   };
 
-  // Handle brush stroke end to count strokes and clear overlay
+  
   const handleStrokeEnd = () => {
     setStrokeCount(prev => {
       const newCount = prev + 1;
       if (newCount >= 3) {
-        // Reveal entire portfolio and hide brush
+        
         if (revealRef.current) {
           revealRef.current.clear();
         }

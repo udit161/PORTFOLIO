@@ -17,9 +17,9 @@ export default function PaintPage() {
   const [color, setColor] = useState('#ffffff');
   const [brushSize, setBrushSize] = useState(8);
   const [isEraser, setIsEraser] = useState(false);
-  const [tool, setTool] = useState('brush'); // 'brush' | 'eraser'
+  const [tool, setTool] = useState('brush'); 
 
-  // Initialize canvas
+  
   useEffect(() => {
     const canvas = canvasRef.current;
     const dpr = window.devicePixelRatio || 1;
