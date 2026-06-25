@@ -22,6 +22,8 @@ export default function Home() {
     window.scrollTo(0, 0);
   }, []);
 
+
+
   useEffect(() => {
     const canvas = canvasRef.current;
     const card = cardRef.current;
@@ -355,6 +357,8 @@ export default function Home() {
           </p>
         </div>
       </footer>
+
+
     </div>
   );
 }

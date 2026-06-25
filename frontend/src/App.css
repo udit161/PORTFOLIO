@@ -590,6 +590,8 @@
   transition: all 0.25s ease;
   cursor: pointer;
   box-sizing: border-box;
+  user-select: text;
+  -webkit-user-select: text;
 
   &.primary {
     background-color: #c2a43f;
@@ -1539,9 +1541,6 @@ a.footer-val:hover {
 }
 
 .paint-share-cta {
-  position: fixed;
-  top: 16px;
-  right: 16px;
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -1556,8 +1555,6 @@ a.footer-val:hover {
   font-size: 0.8rem;
   text-decoration: none;
   transition: all 0.3s ease;
-  z-index: 100;
-  animation: fadeIn 0.6s ease 0.3s both;
 }
 
 .paint-share-cta svg {
@@ -1720,5 +1717,264 @@ a.footer-val:hover {
     flex-wrap: wrap;
     max-width: 120px;
     justify-content: center;
+  }
+}
+
+/* ==========================================================================
+   Easter Egg — Ghost button, nearly invisible against dark background
+   ========================================================================== */
+.easter-egg-hidden-text {
+  display: block;
+  width: fit-content;
+  margin: 16px auto 32px;
+  padding: 10px 28px;
+  font-family: "Inter", sans-serif;
+  font-size: 0.85rem;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  color: rgba(255, 255, 255, 0.04);
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.02);
+  border-radius: 100px;
+  cursor: default;
+  outline: none;
+  user-select: text;
+  -webkit-user-select: text;
+  transition: color 0.6s ease, border-color 0.6s ease, background 0.6s ease;
+}
+
+.easter-egg-hidden-text::selection {
+  background: rgba(194, 164, 63, 0.35);
+  color: #c2a43f;
+}
+
+.easter-egg-hidden-text::-moz-selection {
+  background: rgba(194, 164, 63, 0.35);
+  color: #c2a43f;
+}
+
+.easter-egg-hidden-text:hover {
+  color: rgba(194, 164, 63, 0.18);
+  border-color: rgba(194, 164, 63, 0.08);
+  background: rgba(194, 164, 63, 0.02);
+  cursor: pointer;
+}
+
+/* ==========================================================================
+   Easter Egg Modal
+   ========================================================================== */
+.easter-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  animation: modal-overlay-in 0.3s ease;
+}
+
+@keyframes modal-overlay-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.easter-modal {
+  position: relative;
+  background: linear-gradient(145deg, rgba(20, 20, 35, 0.95), rgba(10, 10, 20, 0.98));
+  border: 1px solid rgba(194, 164, 63, 0.2);
+  border-radius: 24px;
+  padding: 40px 36px 32px;
+  max-width: 480px;
+  width: 100%;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.6),
+              0 0 60px rgba(194, 164, 63, 0.06),
+              inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  animation: modal-pop-in 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+}
+
+.easter-modal::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(
+    from 0deg,
+    transparent,
+    rgba(194, 164, 63, 0.03),
+    transparent,
+    rgba(194, 164, 63, 0.03),
+    transparent
+  );
+  animation: modal-shimmer 8s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes modal-shimmer {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes modal-pop-in {
+  from { opacity: 0; transform: scale(0.9) translateY(20px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.easter-modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.5);
+  transition: all 0.2s ease;
+  z-index: 2;
+}
+
+.easter-modal-close:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+.easter-modal-header {
+  text-align: center;
+  margin-bottom: 28px;
+  position: relative;
+  z-index: 1;
+}
+
+.easter-modal-emoji {
+  font-size: 2.8rem;
+  display: block;
+  margin-bottom: 12px;
+  animation: emoji-bounce 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+}
+
+@keyframes emoji-bounce {
+  from { transform: scale(0) rotate(-20deg); opacity: 0; }
+  to { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
+.easter-modal-title {
+  font-family: "Concert One", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: #c2a43f;
+  margin: 0 0 6px 0;
+}
+
+.easter-modal-subtitle {
+  font-family: "Inter", sans-serif;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.45);
+  margin: 0;
+}
+
+.easter-modal-facts {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 28px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  position: relative;
+  z-index: 1;
+}
+
+.easter-modal-facts li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-family: "Inter", sans-serif;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.5;
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  opacity: 0;
+  transform: translateX(-12px);
+  animation: fact-slide-in 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.easter-modal-facts li:nth-child(1) { animation-delay: 0.15s; }
+.easter-modal-facts li:nth-child(2) { animation-delay: 0.25s; }
+.easter-modal-facts li:nth-child(3) { animation-delay: 0.35s; }
+.easter-modal-facts li:nth-child(4) { animation-delay: 0.45s; }
+.easter-modal-facts li:nth-child(5) { animation-delay: 0.55s; }
+.easter-modal-facts li:nth-child(6) { animation-delay: 0.65s; }
+
+@keyframes fact-slide-in {
+  from { opacity: 0; transform: translateX(-12px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.fact-icon {
+  font-size: 1.2rem;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.easter-modal-footer {
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.easter-modal-btn {
+  font-family: "Inter", sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #0a0a14;
+  background: linear-gradient(135deg, #c2a43f, #e0c85a);
+  border: none;
+  border-radius: 100px;
+  padding: 12px 32px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(194, 164, 63, 0.25);
+}
+
+.easter-modal-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 28px rgba(194, 164, 63, 0.35);
+}
+
+.easter-modal-btn:active {
+  transform: translateY(0) scale(0.98);
+}
+
+@media (max-width: 550px) {
+  .easter-modal {
+    padding: 32px 24px 24px;
+    border-radius: 20px;
+  }
+
+  .easter-modal-title {
+    font-size: 1.25rem;
+  }
+
+  .easter-modal-facts li {
+    font-size: 0.85rem;
+    padding: 8px 12px;
+  }
+
+  .easter-egg-btn {
+    font-size: 0.8rem;
+    padding: 10px 24px;
   }
 }
