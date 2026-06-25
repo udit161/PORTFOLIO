@@ -449,6 +449,9 @@ const [brushVisible, setBrushVisible] = useState(true);
           <p className="copyright-text">
             &copy; Made with Love by Udit Kumar.<br />
           </p>
+          <button className="secret-about-btn" onClick={() => alert('About page coming soon!')}>
+            wanna know more about me
+          </button>
         </div>
       </footer>
 
