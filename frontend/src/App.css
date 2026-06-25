@@ -646,7 +646,7 @@
   max-width: 1100px;
   width: 100%;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(30, 30, 45, 0.6);
+  background: rgba(20, 20, 30, 0.85); /* Darker and more opaque for better visibility */
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-radius: 24px;
@@ -656,6 +656,10 @@
   text-align: left;
   box-sizing: border-box;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  transform: translateZ(0); /* Force hardware acceleration to prevent vanishing bug over canvas */
+  position: relative; /* Ensure it stays above z-index -1 canvas */
+  z-index: 10;
+
 
   @media (max-width: 900px) {
     grid-template-columns: 1fr 1fr;
