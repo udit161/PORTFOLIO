@@ -13,6 +13,7 @@ import DraggableBrush from '../components/DraggableBrush';
 export default function Home() {
   const navigate = useNavigate();
   const [showBrushPopup, setShowBrushPopup] = useState(false);
+  const [showSecretPopup, setShowSecretPopup] = useState(false);
   const canvasRef = useRef(null);
   const cardRef = useRef(null);
   const particlesRef = useRef([]);
@@ -427,6 +428,15 @@ const [brushVisible, setBrushVisible] = useState(true);
         </div>
       )}
 
+      {showSecretPopup && (
+        <div className="brush-popup-overlay" onClick={() => setShowSecretPopup(false)}>
+          <div className="secret-popup-card" onClick={(e) => e.stopPropagation()}>
+            <h2 className="secret-popup-text">JUST A COOL GUY WITH A LOTS OF PATIENCE 😎</h2>
+            <button className="brush-popup-btn secondary" onClick={() => setShowSecretPopup(false)}>Close</button>
+          </div>
+        </div>
+      )}
+
       <footer className="portfolio-footer">
         <div className="footer-col col-contact">
           <p className="footer-label">Email</p>
@@ -453,7 +463,7 @@ const [brushVisible, setBrushVisible] = useState(true);
       </footer>
 
       <div className="secret-btn-container">
-        <button className="secret-about-btn" onClick={() => alert('About page coming soon!')}>
+        <button className="secret-about-btn" onClick={() => setShowSecretPopup(true)}>
           wanna know more about me
         </button>
       </div>
