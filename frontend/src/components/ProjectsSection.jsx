@@ -47,7 +47,6 @@ function ProjectCard({ project, index }) {
       className={`project-card ${isVisible ? 'project-card--visible' : ''}`}
       style={{ animationDelay: `${index * 0.15}s` }}
     >
-      {/* Video Preview */}
       <div
         className={`project-video-wrapper ${isVideoHovered ? 'project-video-wrapper--hovered' : ''}`}
         onMouseEnter={() => setIsVideoHovered(true)}
@@ -70,7 +69,7 @@ function ProjectCard({ project, index }) {
         </div>
       </div>
 
-      {/* Content */}
+
       <div className="project-content">
         <div className="project-header">
           <div className="project-title-group">
@@ -110,7 +109,7 @@ function ProjectCard({ project, index }) {
 
         <p className="project-description">{project.description}</p>
 
-        {/* Highlights */}
+
         <ul className="project-highlights">
           {project.highlights.map((highlight, i) => (
             <li key={i} className="project-highlight-item">
@@ -122,7 +121,6 @@ function ProjectCard({ project, index }) {
           ))}
         </ul>
 
-        {/* Tech Stack */}
         <div className="project-tech-stack">
           {project.techStack.map((tech) => (
             <span key={tech} className="project-tech-tag">

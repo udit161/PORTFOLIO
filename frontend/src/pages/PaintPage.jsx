@@ -112,8 +112,6 @@ export default function PaintPage() {
         onTouchMove={draw}
         onTouchEnd={stopDraw}
       />
-
-      {/* Top bar */}
       <div className="paint-top-bar">
         <Link to="/" className="paint-back-link">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -134,9 +132,9 @@ export default function PaintPage() {
         </a>
       </div>
 
-      {/* Toolbar */}
+
       <div className="paint-toolbar">
-        {/* Colors */}
+
         <div className="paint-tool-group">
           <span className="paint-tool-label">Color</span>
           <div className="paint-color-row">
@@ -152,7 +150,7 @@ export default function PaintPage() {
           </div>
         </div>
 
-        {/* Brush sizes */}
+
         <div className="paint-tool-group">
           <span className="paint-tool-label">Size</span>
           <div className="paint-size-row">
@@ -169,7 +167,7 @@ export default function PaintPage() {
           </div>
         </div>
 
-        {/* Tools */}
+
         <div className="paint-tool-group">
           <span className="paint-tool-label">Tools</span>
           <div className="paint-tools-row">

@@ -7,6 +7,8 @@ import BioButtons from '../components/BioButtons';
 import BlackholeBackground from '../components/BlackholeBackground';
 import ProjectsSection from '../components/ProjectsSection';
 import Logo from '../components/Logo';
+import RevealOverlay from '../components/RevealOverlay';
+import DraggableBrush from '../components/DraggableBrush';
 
 export default function Home() {
   const navigate = useNavigate();
@@ -18,11 +20,57 @@ export default function Home() {
   const isOverPhotoRef = useRef(false);
   const topoImgRef = useRef(null);
 
+  const [brushParticles, setBrushParticles] = useState([]);
+  const brushParticlesRef = useRef([]);
+  const revealRef = useRef(null);
+  const [showGuide, setShowGuide] = useState(true);
+
+  const handleBrushMove = (x, y) => {
+    const newParticles = Array.from({ length: 3 }).map(() => {
+      const hue = Math.floor(Math.random() * 35) + 15;
+      const size = Math.random() * 8 + 4;
+      return {
+        id: Math.random() + Date.now(),
+        x,
+        y,
+        size,
+        color: `hsl(${hue}, 100%, 60%)`,
+        opacity: 1,
+        vx: (Math.random() - 0.5) * 2.5,
+        vy: Math.random() * 2.5 + 0.5,
+        life: 1,
+      };
+    });
+    brushParticlesRef.current = [...brushParticlesRef.current, ...newParticles];
+    // Reveal the underlying portfolio via overlay
+    if (revealRef.current) {
+      revealRef.current.reveal(x, y);
+    }
+    // Hide guide after first interaction
+    setShowGuide(false);
+  };
+
+  useEffect(() => {
+    let animationFrameId;
+    const updateParticles = () => {
+      brushParticlesRef.current = brushParticlesRef.current
+        .map((p) => ({
+          ...p,
+          x: p.x + p.vx,
+          y: p.y + p.vy,
+          opacity: p.opacity - 0.022,
+        }))
+        .filter((p) => p.opacity > 0);
+      setBrushParticles([...brushParticlesRef.current]);
+      animationFrameId = requestAnimationFrame(updateParticles);
+    };
+    animationFrameId = requestAnimationFrame(updateParticles);
+    return () => cancelAnimationFrame(animationFrameId);
+  }, []);
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
-
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -223,6 +271,33 @@ export default function Home() {
     <div className="wix-portfolio-root">
       <BlackholeBackground />
 
+      <RevealOverlay ref={revealRef} />
+
+      {showGuide && (
+        <div className="reveal-guide">
+          Paint to reveal
+        </div>
+      )}
+
+      {brushParticles.map((p) => (
+        <div
+          key={p.id}
+          className="meteor-spark"
+          style={{
+            left: `${p.x}px`,
+            top: `${p.y}px`,
+            width: `${p.size}px`,
+            height: `${p.size}px`,
+            backgroundColor: p.color,
+            opacity: p.opacity,
+            boxShadow: `0 0 ${p.size * 1.5}px ${p.color}`,
+          }}
+        />
+      ))}
+
+
+      <DraggableBrush onMove={handleBrushMove} />
+
       <header className="portfolio-header">
         <div className="logo-container">
           <Logo />
@@ -236,7 +311,7 @@ export default function Home() {
           <div className="lavender-card" ref={cardRef}>
             <canvas ref={canvasRef} className="card-destruction-canvas" />
             <div className="lavender-card-accent" />
-            {/* Ghost paintbrush button — barely visible */}
+
             <button
               className="ghost-brush-btn"
               title="Paint tool"
@@ -244,13 +319,13 @@ export default function Home() {
               onClick={() => setShowBrushPopup(true)}
             >
               <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" className="ghost-brush-svg">
-                {/* Handle */}
+
                 <path d="M12 52 L32 32 L36 36 L16 56 Z" fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.18)" strokeWidth="1" />
-                {/* Ferrule */}
+
                 <path d="M32 32 L40 24 L44 28 L36 36 Z" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.2)" strokeWidth="1" />
-                {/* Bristles */}
+
                 <path d="M40 24 C44 16 48 12 56 8 C52 16 48 22 44 28 Z" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.18)" strokeWidth="1" />
-                {/* Tip glow */}
+
                 <path d="M48 16 C50 12 54 10 56 8 C54 10 52 14 48 16 Z" fill="rgba(255,255,255,0.2)" />
               </svg>
             </button>
@@ -312,7 +387,7 @@ export default function Home() {
 
       <ProjectsSection />
 
-      {/* Brush popup modal */}
+
       {showBrushPopup && (
         <div className="brush-popup-overlay" onClick={() => setShowBrushPopup(false)}>
           <div className="brush-popup" onClick={(e) => e.stopPropagation()}>

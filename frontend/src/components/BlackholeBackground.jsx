@@ -26,10 +26,9 @@ export default function BlackholeBackground() {
     resize();
     window.addEventListener('resize', resize);
 
-    // ── Black hole center ───────────────────────────────────────
+
     const bh = () => ({ x: W * 0.5, y: H * 0.5 });
 
-    // ── Background stars ────────────────────────────────────────
     const NUM_STARS = 320;
     const stars = Array.from({ length: NUM_STARS }, () => ({
       x: Math.random() * W,
@@ -41,7 +40,7 @@ export default function BlackholeBackground() {
       speed: Math.random() * 0.012 + 0.004,
     }));
 
-    // ── Accretion disk particles ─────────────────────────────────
+
     const NUM_DISK = 800;
     const diskParticles = Array.from({ length: NUM_DISK }, (_, i) => {
       const angle = Math.random() * Math.PI * 2;
@@ -54,12 +53,12 @@ export default function BlackholeBackground() {
         speed: speed * (Math.random() > 0.5 ? 1 : -1) * (Math.random() * 0.4 + 0.8),
         alpha: Math.random() * 0.85 + 0.15,
         r: Math.random() * 2.4 + 0.4,
-        hue: Math.random() * 40,          // 0-40 → orange spectrum
+        hue: Math.random() * 40,
         life: 1,
       };
     });
 
-    // ── Infalling spiral particles ───────────────────────────────
+
     const NUM_INFALL = 120;
     const makeFaller = () => {
       const angle = Math.random() * Math.PI * 2;
@@ -77,24 +76,22 @@ export default function BlackholeBackground() {
     };
     const fallers = Array.from({ length: NUM_INFALL }, makeFaller);
 
-    // ── Relativistic jets removed per user request ──────────────
+
 
     let t = 0;
 
     const draw = () => {
       t += 0.016;
       const center = bh();
-
-      // Clear with near-black (subtle trail)
       ctx.fillStyle = 'rgba(2, 2, 6, 0.35)';
       ctx.fillRect(0, 0, W, H);
 
-      // ── Background stars (lensed: shift toward BH slightly) ──
+
       for (const s of stars) {
         s.phase += s.speed;
         s.alpha = s.baseAlpha * (0.5 + 0.5 * Math.sin(s.phase));
 
-        // Gravitational lensing: stars appear to bend toward center
+
         const dx = center.x - s.x;
         const dy = center.y - s.y;
         const dist = Math.sqrt(dx * dx + dy * dy) || 1;
@@ -108,22 +105,17 @@ export default function BlackholeBackground() {
         ctx.fill();
       }
 
-      // ── Relativistic jets rendering removed ──────────────────
 
-      // ── Accretion disk ────────────────────────────────────────
       for (const p of diskParticles) {
         p.angle += p.speed;
 
-        // Flatten disk (ellipse) — tilt factor
         const px = center.x + Math.cos(p.angle) * p.dist;
         const py = center.y + Math.sin(p.angle) * p.dist * 0.32;
 
-        const heat = 1 - (p.dist - 80) / 260; // 0-1 (inner = hotter)
+        const heat = 1 - (p.dist - 80) / 260;
         const r = Math.round(255);
         const g = Math.round(heat * 180 + p.hue * 1.5);
         const b = Math.round(heat * 60);
-
-        // Fade behind the BH event horizon (y > center.y → behind)
         const behindFactor = py > center.y ? 0.4 : 1.0;
 
         ctx.beginPath();
@@ -132,7 +124,7 @@ export default function BlackholeBackground() {
         ctx.fill();
       }
 
-      // ── Infalling particles (spiral inward) ──────────────────
+
       for (const f of fallers) {
         f.angle += f.speed;
         f.dist *= f.shrink;
@@ -143,7 +135,7 @@ export default function BlackholeBackground() {
         const lifeRatio = f.dist / f.startDist;
 
         if (lifeRatio < 0.18) {
-          // Reset when swallowed
+
           Object.assign(f, makeFaller());
         }
 
@@ -158,7 +150,6 @@ export default function BlackholeBackground() {
         ctx.fill();
       }
 
-      // ── Photon ring (bright lensed ring just outside EH) ─────
       const photonR = 72;
       const photonGrad = ctx.createRadialGradient(
         center.x, center.y, photonR - 6,
@@ -173,7 +164,7 @@ export default function BlackholeBackground() {
       ctx.fillStyle = photonGrad;
       ctx.fill();
 
-      // ── Outer glow halo ───────────────────────────────────────
+
       const haloGrad = ctx.createRadialGradient(
         center.x, center.y, photonR,
         center.x, center.y, photonR + 180
@@ -186,7 +177,7 @@ export default function BlackholeBackground() {
       ctx.fillStyle = haloGrad;
       ctx.fill();
 
-      // ── Event horizon (pure black circle) ────────────────────
+
       const ehGrad = ctx.createRadialGradient(
         center.x, center.y, 0,
         center.x, center.y, photonR

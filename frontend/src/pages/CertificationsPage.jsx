@@ -59,7 +59,7 @@ export default function CertificationsPage() {
       </header>
 
       <div className="certs-page-content">
-        {/* Back navigation */}
+
         <Link to="/" className="certs-back-link">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <path d="M19 12H5" />
@@ -68,14 +68,12 @@ export default function CertificationsPage() {
           Back to Home
         </Link>
 
-        {/* Heading */}
         <div className={`certs-heading-group ${visible ? 'certs-heading-group--visible' : ''}`}>
           <span className="certs-section-label">Achievements</span>
           <h1 className="certs-section-title">Certifications</h1>
           <div className="certs-section-divider" />
         </div>
 
-        {/* Grid of certificate cards */}
         <div className="certs-grid">
           {certifications.map((cert, idx) => (
             <div
@@ -83,10 +81,10 @@ export default function CertificationsPage() {
               className={`cert-card ${visible ? 'cert-card--visible' : ''}`}
               style={{ animationDelay: `${idx * 0.15}s` }}
             >
-              {/* Glow effect */}
+
               <div className="cert-card-glow" />
 
-              {/* Certificate image */}
+
               <div className="cert-image-wrapper" onClick={() => setLightbox(cert)}>
                 <img src={cert.image} alt={cert.title} className="cert-image" />
                 <div className="cert-image-overlay">
@@ -99,7 +97,7 @@ export default function CertificationsPage() {
                 </div>
               </div>
 
-              {/* Certificate info */}
+
               <div className="cert-info">
                 <div className="cert-info-top">
                   <span className="cert-issuer-badge">{cert.issuer}</span>
@@ -123,7 +121,7 @@ export default function CertificationsPage() {
         </div>
       </div>
 
-      {/* Lightbox Modal */}
+
       {lightbox && (
         <div className="cert-lightbox" onClick={() => setLightbox(null)}>
           <button className="cert-lightbox-close" onClick={() => setLightbox(null)}>

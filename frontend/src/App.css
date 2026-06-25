@@ -64,12 +64,15 @@
   0% {
     border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
   }
+
   33% {
     border-radius: 40% 60% 70% 30% / 50% 60% 30% 60%;
   }
+
   66% {
     border-radius: 70% 30% 40% 60% / 40% 70% 60% 30%;
   }
+
   100% {
     border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
   }
@@ -197,8 +200,13 @@
 }
 
 @keyframes spin-slow {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /* Ghost paintbrush button — barely visible easter egg */
@@ -268,6 +276,7 @@
     opacity: 0;
     transform: scale(0.9) translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: scale(1) translateY(0);
@@ -339,13 +348,23 @@
 }
 
 @keyframes float-blob-1 {
-  0% { transform: translate(0, 0) scale(1); }
-  100% { transform: translate(-40px, 30px) scale(1.15); }
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  100% {
+    transform: translate(-40px, 30px) scale(1.15);
+  }
 }
 
 @keyframes float-blob-2 {
-  0% { transform: translate(0, 0) scale(1); }
-  100% { transform: translate(50px, -40px) scale(1.1); }
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  100% {
+    transform: translate(50px, -40px) scale(1.1);
+  }
 }
 
 .hello-title {
@@ -390,7 +409,8 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center top; /* Align to top to make hair fully visible */
+  object-position: center top;
+  /* Align to top to make hair fully visible */
   border-radius: 12px;
   display: block;
 }
@@ -400,12 +420,13 @@
   position: absolute;
   bottom: 0px;
   left: -28px;
-  background-color: #c2a43f; /* Wix Mustard Yellow */
+  background-color: #c2a43f;
+  /* Wix Mustard Yellow */
   display: grid;
   grid-template-columns: repeat(2, 40px);
   grid-template-rows: repeat(2, 40px);
   border: 1px solid #1a1a1a;
-  box-shadow: 4px 6px 15px rgba(0,0,0,0.2);
+  box-shadow: 4px 6px 15px rgba(0, 0, 0, 0.2);
   z-index: 5;
 
   @media (max-width: 480px) {
@@ -506,6 +527,7 @@
   @media (max-width: 1100px) {
     font-size: 2.5rem;
   }
+
   @media (max-width: 480px) {
     font-size: 2rem;
   }
@@ -531,8 +553,15 @@
 }
 
 @keyframes typing-cursor-blink {
-  0%, 100% { opacity: 0; }
-  50% { opacity: 1; }
+
+  0%,
+  100% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
 }
 
 @keyframes fadeIn {
@@ -540,6 +569,7 @@
     opacity: 0;
     transform: translateY(12px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -760,7 +790,7 @@ a.footer-val:hover {
   opacity: 0;
   transform: translateY(30px);
   transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .projects-heading-group--visible {
@@ -822,8 +852,8 @@ a.footer-val:hover {
     0 20px 60px rgba(0, 0, 0, 0.5),
     inset 0 1px 0 rgba(255, 255, 255, 0.05);
   transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.5s ease,
-              border-color 0.3s ease;
+    box-shadow 0.5s ease,
+    border-color 0.3s ease;
   opacity: 0;
   transform: translateY(40px);
 }
@@ -862,11 +892,9 @@ a.footer-val:hover {
   position: absolute;
   inset: 0;
   opacity: 0;
-  background: radial-gradient(
-    ellipse at center,
-    rgba(194, 164, 63, 0.12) 0%,
-    transparent 70%
-  );
+  background: radial-gradient(ellipse at center,
+      rgba(194, 164, 63, 0.12) 0%,
+      transparent 70%);
   transition: opacity 0.5s ease;
   z-index: 2;
   pointer-events: none;
@@ -882,7 +910,7 @@ a.footer-val:hover {
   object-fit: cover;
   display: block;
   transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-              filter 0.4s ease;
+    filter 0.4s ease;
   filter: brightness(0.85) saturate(0.9);
 }
 
@@ -920,7 +948,7 @@ a.footer-val:hover {
   color: #c2a43f;
 }
 
-/* Project Content */
+
 .project-content {
   padding: 28px 32px 32px;
 }
@@ -1139,7 +1167,7 @@ a.footer-val:hover {
   opacity: 0;
   transform: translateY(30px);
   transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .certs-heading-group--visible {
@@ -1207,8 +1235,8 @@ a.footer-val:hover {
     0 20px 60px rgba(0, 0, 0, 0.5),
     inset 0 1px 0 rgba(255, 255, 255, 0.05);
   transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.5s ease,
-              border-color 0.3s ease;
+    box-shadow 0.5s ease,
+    border-color 0.3s ease;
   opacity: 0;
   transform: translateY(40px);
 }
@@ -1268,7 +1296,7 @@ a.footer-val:hover {
   object-fit: cover;
   display: block;
   transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-              filter 0.4s ease;
+    filter 0.4s ease;
   filter: brightness(0.9) saturate(0.95);
 }
 
@@ -1429,6 +1457,7 @@ a.footer-val:hover {
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -1473,6 +1502,7 @@ a.footer-val:hover {
     opacity: 0;
     transform: scale(0.9);
   }
+
   to {
     opacity: 1;
     transform: scale(1);
@@ -1778,8 +1808,13 @@ a.footer-val:hover {
 }
 
 @keyframes modal-overlay-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 .easter-modal {
@@ -1791,8 +1826,8 @@ a.footer-val:hover {
   max-width: 480px;
   width: 100%;
   box-shadow: 0 24px 80px rgba(0, 0, 0, 0.6),
-              0 0 60px rgba(194, 164, 63, 0.06),
-              inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    0 0 60px rgba(194, 164, 63, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
   animation: modal-pop-in 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   overflow: hidden;
 }
@@ -1804,26 +1839,36 @@ a.footer-val:hover {
   left: -50%;
   width: 200%;
   height: 200%;
-  background: conic-gradient(
-    from 0deg,
-    transparent,
-    rgba(194, 164, 63, 0.03),
-    transparent,
-    rgba(194, 164, 63, 0.03),
-    transparent
-  );
+  background: conic-gradient(from 0deg,
+      transparent,
+      rgba(194, 164, 63, 0.03),
+      transparent,
+      rgba(194, 164, 63, 0.03),
+      transparent);
   animation: modal-shimmer 8s linear infinite;
   pointer-events: none;
 }
 
 @keyframes modal-shimmer {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 @keyframes modal-pop-in {
-  from { opacity: 0; transform: scale(0.9) translateY(20px); }
-  to { opacity: 1; transform: scale(1) translateY(0); }
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
 }
 
 .easter-modal-close {
@@ -1864,8 +1909,15 @@ a.footer-val:hover {
 }
 
 @keyframes emoji-bounce {
-  from { transform: scale(0) rotate(-20deg); opacity: 0; }
-  to { transform: scale(1) rotate(0deg); opacity: 1; }
+  from {
+    transform: scale(0) rotate(-20deg);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
 }
 
 .easter-modal-title {
@@ -1911,16 +1963,40 @@ a.footer-val:hover {
   animation: fact-slide-in 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-.easter-modal-facts li:nth-child(1) { animation-delay: 0.15s; }
-.easter-modal-facts li:nth-child(2) { animation-delay: 0.25s; }
-.easter-modal-facts li:nth-child(3) { animation-delay: 0.35s; }
-.easter-modal-facts li:nth-child(4) { animation-delay: 0.45s; }
-.easter-modal-facts li:nth-child(5) { animation-delay: 0.55s; }
-.easter-modal-facts li:nth-child(6) { animation-delay: 0.65s; }
+.easter-modal-facts li:nth-child(1) {
+  animation-delay: 0.15s;
+}
+
+.easter-modal-facts li:nth-child(2) {
+  animation-delay: 0.25s;
+}
+
+.easter-modal-facts li:nth-child(3) {
+  animation-delay: 0.35s;
+}
+
+.easter-modal-facts li:nth-child(4) {
+  animation-delay: 0.45s;
+}
+
+.easter-modal-facts li:nth-child(5) {
+  animation-delay: 0.55s;
+}
+
+.easter-modal-facts li:nth-child(6) {
+  animation-delay: 0.65s;
+}
 
 @keyframes fact-slide-in {
-  from { opacity: 0; transform: translateX(-12px); }
-  to { opacity: 1; transform: translateX(0); }
+  from {
+    opacity: 0;
+    transform: translateX(-12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 .fact-icon {
@@ -1977,4 +2053,113 @@ a.footer-val:hover {
     font-size: 0.8rem;
     padding: 10px 24px;
   }
+}
+
+/* Draggable particles (Embers) */
+.meteor-spark {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+}
+
+/* ==========================================================================
+   Draggable Paintbrush
+   ========================================================================== */
+.draggable-brush-container {
+  position: fixed;
+  width: 110px;
+  height: 110px;
+  z-index: 99999;
+  cursor: grab;
+  user-select: none;
+  touch-action: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Switch off transition for top/left during drag to prevent movement lag */
+  transition: transform 0.15s cubic-bezier(0.25, 0.8, 0.25, 1.1);
+}
+
+.draggable-brush-container.dragging {
+  cursor: grabbing;
+  transform: scale(1.08) !important;
+  /* Lock scale, prevent mouse move rotation conflict */
+}
+
+.brush-glow-aura {
+  position: absolute;
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 140, 0, 0.16) 0%, rgba(255, 215, 0, 0.04) 40%, transparent 70%);
+  pointer-events: none;
+}
+
+.draggable-brush-container:hover .brush-glow-aura {
+  background: radial-gradient(circle, rgba(255, 140, 0, 0.24) 0%, rgba(255, 215, 0, 0.08) 45%, transparent 70%);
+}
+
+.draggable-brush-svg {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.4)) drop-shadow(0 0 10px rgba(255, 140, 0, 0.2));
+  transition: filter 0.3s;
+}
+
+.draggable-brush-container.dragging .draggable-brush-svg {
+  filter: drop-shadow(0 12px 20px rgba(0, 0, 0, 0.5)) drop-shadow(0 0 15px rgba(255, 140, 0, 0.45));
+}
+
+.brush-help-tag {
+  position: absolute;
+  bottom: -18px;
+  background: rgba(255, 140, 0, 0.9);
+  color: #000000;
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 2px 10px;
+  border-radius: 20px;
+  box-shadow: 0 4px 10px rgba(255, 140, 0, 0.2);
+  white-space: nowrap;
+  animation: pulseHelp 2s infinite ease-in-out;
+}
+
+@keyframes pulseHelp {
+
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+
+  50% {
+    transform: translateY(-3px) scale(1.05);
+  }
+} 
+
+/* Reveal overlay */
+.reveal-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9998; /* below brush (9999) */
+  pointer-events: none;
+}
+
+/* Reveal guide */
+.reveal-guide {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 2rem;
+  font-weight: 600;
+  z-index: 9999;
+  pointer-events: none;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.7);
 }
