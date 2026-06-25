@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 
-export default function DraggableBrush({ onMove }) {
+export default function DraggableBrush({ onMove, onStrokeEnd }) {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [isCentered, setIsCentered] = useState(true);
   const [isDragging, setIsDragging] = useState(false);
@@ -71,6 +71,9 @@ export default function DraggableBrush({ onMove }) {
     const handleMouseUp = () => {
       setIsDragging(false);
       setTilt(0);
+      if (onStrokeEnd) {
+        onStrokeEnd();
+      }
     };
 
     if (isDragging) {
@@ -86,7 +89,7 @@ export default function DraggableBrush({ onMove }) {
       window.removeEventListener('touchmove', handleTouchMove);
       window.removeEventListener('touchend', handleMouseUp);
     };
-  }, [isDragging, onMove]);
+  }, [isDragging, onMove, onStrokeEnd]);
 
   const startDrag = (clientX, clientY) => {
     setIsCentered(false);

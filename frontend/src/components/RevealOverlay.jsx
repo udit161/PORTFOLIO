@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, forwardRef, useImperativeHandle } from 'react';
+import React, { useRef, useEffect, forwardRef, useImperativeHandle, useState } from 'react';
 
 // This component renders a full-screen canvas that starts black and allows
 // parts of it to be erased (revealed) by drawing transparent circles.
@@ -6,6 +6,7 @@ import React, { useRef, useEffect, forwardRef, useImperativeHandle } from 'react
 // (e.g., the draggable brush) can trigger the erasing.
 
 const RevealOverlay = forwardRef((props, ref) => {
+  const [isCleared, setIsCleared] = useState(false);
   const canvasRef = useRef(null);
 
   // Initialize canvas size and fill with black
@@ -28,9 +29,10 @@ const RevealOverlay = forwardRef((props, ref) => {
     };
   }, []);
 
-  // Expose the reveal method to parent components
+    // Expose the reveal and clear methods to parent components
   useImperativeHandle(ref, () => ({
     reveal(x, y) {
+      if (isCleared) return;
       const canvas = canvasRef.current;
       if (!canvas) return;
       const ctx = canvas.getContext('2d');
@@ -42,12 +44,20 @@ const RevealOverlay = forwardRef((props, ref) => {
       ctx.fill();
       ctx.restore();
     },
+    clear() {
+      setIsCleared(true);
+    },
   }));
 
   return (
     <canvas
       ref={canvasRef}
       className="reveal-canvas"
+      style={{
+        opacity: isCleared ? 0 : 1,
+        transition: 'opacity 1s ease-in-out',
+        pointerEvents: isCleared ? 'none' : 'auto'
+      }}
     />
   );
 });
