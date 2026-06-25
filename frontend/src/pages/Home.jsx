@@ -431,7 +431,7 @@ const [brushVisible, setBrushVisible] = useState(true);
       {showSecretPopup && (
         <div className="brush-popup-overlay" onClick={() => setShowSecretPopup(false)}>
           <div className="secret-popup-card" onClick={(e) => e.stopPropagation()}>
-            <h2 className="secret-popup-text">JUST A COOL GUY WITH A LOTS OF PATIENCE 😎</h2>
+            <h2 className="secret-popup-text">JUST A COOL GUY WITH A LOT OF PATIENCE</h2>
             <button className="brush-popup-btn secondary" onClick={() => setShowSecretPopup(false)}>Close</button>
           </div>
         </div>
