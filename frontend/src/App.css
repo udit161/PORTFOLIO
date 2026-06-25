@@ -2163,3 +2163,20 @@ a.footer-val:hover {
   pointer-events: none;
   text-shadow: 0 2px 6px rgba(0,0,0,0.7);
 }
+
+/* Secret Button in Footer */
+.secret-about-btn {
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.05); /* very faint */
+  cursor: pointer;
+  font-size: 0.75rem;
+  margin-top: 10px;
+  text-transform: lowercase;
+  transition: color 0.3s ease;
+  font-family: inherit;
+}
+
+.secret-about-btn:hover {
+  color: rgba(255, 255, 255, 0.3);
+}
