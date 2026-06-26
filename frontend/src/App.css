@@ -2195,5 +2195,6 @@ a.footer-val:hover {
   text-transform: uppercase;
   background: linear-gradient(to right, #fff, #a0aec0);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
