@@ -578,9 +578,13 @@
   background: rgba(6, 6, 12, 0.4);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  padding: 10px 16px;
-  border-radius: 12px;
+  padding: 8px 12px;
+  border-radius: 40px;
+  width: fit-content;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
   border: 1px solid rgba(255, 255, 255, 0.05);
+  opacity: 0;
+  animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 
   @media (max-width: 900px) {
     position: relative;
@@ -591,13 +595,6 @@
     flex-wrap: wrap;
   }
 }
-  padding: 8px 12px;
-  border-radius: 40px;
-  width: fit-content;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  opacity: 0;
-  animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 
   @media (max-width: 900px) {
     position: relative;
