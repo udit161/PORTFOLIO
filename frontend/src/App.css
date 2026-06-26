@@ -590,16 +590,6 @@
     position: relative;
     bottom: auto;
     left: auto;
-    margin-top: 24px;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-  }
-}
-
-  @media (max-width: 900px) {
-    position: relative;
-    bottom: auto;
-    left: auto;
     margin-top: 20px;
     flex-wrap: wrap;
     justify-content: center;
