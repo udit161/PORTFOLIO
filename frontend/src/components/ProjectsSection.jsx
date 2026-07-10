@@ -19,6 +19,24 @@ const projects = [
       'Responsive mobile-first design',
     ],
   },
+  {
+    id: 'kharche',
+    title: 'Kharche',
+    subtitle: 'Personal Finance & Budget Tracker',
+    description:
+      'A modern personal finance tracker to manage daily budgets, expenses, priority commitments, and subscriptions. Built with an interactive dark-mode dashboard, it features real-time budget utilization warnings, future commitment scheduling, and recurring bill aggregates with yearly projections.',
+    techStack: ['React', 'Node.js', 'Express', 'MongoDB', 'Tailwind CSS', 'Recharts', 'React Router'],
+    liveUrl: 'https://kharche10.onrender.com/',
+    githubUrl: 'https://github.com/udit161/kharche',
+    demoVideo: '/kharche_demo.webp',
+    highlights: [
+      'Interactive dashboard with real-time budget utilization tracking',
+      'Monthly subscriptions tracker with projected yearly analysis',
+      'Priority-based future commitments and expense scheduling',
+      'Multi-category transaction tracking with visual indicators',
+      'Polished responsive design with seamless dark/light mode toggle',
+    ],
+  },
 ];
 
 function ProjectCard({ project, index }) {
