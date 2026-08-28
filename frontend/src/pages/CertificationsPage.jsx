@@ -3,10 +3,28 @@ import { Link } from 'react-router-dom';
 import Logo from '../components/Logo';
 import BlackholeBackground from '../components/BlackholeBackground';
 import certCwhDataScience from '../assets/cert_cwh_datascience.png';
+import certStanfordMl from '../assets/cert_stanford_ml.png';
 
 const certifications = [
   {
     id: 1,
+    title: 'Supervised Machine Learning: Regression and Classification',
+    issuer: 'Stanford Online & DeepLearning.AI',
+    image: certStanfordMl,
+    verifyUrl: 'https://coursera.org/verify/K3CHSjU1N8HB',
+    learnings: [
+      'Learned supervised learning fundamentals from Andrew Ng',
+      'Built and trained linear regression models for prediction tasks',
+      'Implemented logistic regression for binary classification problems',
+      'Understood cost functions and gradient descent optimization',
+      'Applied feature scaling and feature engineering techniques',
+      'Explored regularization methods to prevent overfitting',
+      'Gained practical experience with real-world ML datasets',
+      'Learned the mathematics behind machine learning algorithms',
+    ],
+  },
+  {
+    id: 2,
     title: 'The Ultimate Job Ready Data Science Course',
     issuer: 'CodeWithHarry',
     image: certCwhDataScience,
